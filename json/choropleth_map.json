@@ -12,22 +12,43 @@
         "name": "Number_of_startups",
         "value": 0,
         "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 400,
-        "step": 10,
-        "name": "Minimum number of start-ups: "
+          "input": "range",
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "name": "Minimum number of start-ups: "
         }
-        }
+      }
     ],
   "projection": {"type": "equalEarth"},
   "layer":[
-    
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/ne_110m(1).json",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark":{"type": "geoshape", "fill": null, "stroke": "darkgray"}
+  
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/oceans.json",
+        "format": {"type": "topojson", "feature": "oceans"}  
+    },
+    "mark":{"type": "geoshape", "fill": "lightskyblue"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/ne_110m(1).json",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}  
+    },
+    "mark":{"type": "geoshape", "fill": null,"stroke":"lightgray"}
+    },
     {
       "transform": [
         {"calculate": "'Data is not available in ' + datum.properties.NAME", "as": "note"}
       ],
-      "mark": {"type": "geoshape", "fill": "#edf8e9", "stroke": "whitesmoke"},
+      "mark": {"type": "geoshape", "fill": "#edf8e9", "stroke": "grey"},
       "encoding": {
         "tooltip": {
           "field": "note"
@@ -50,7 +71,7 @@
         "filter": "datum.Num_of_startups > Number_of_startups"
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "white"},
+      "mark": {"type": "geoshape", "stroke": "grey"},
       "encoding": {
         "color": {
           "field": "Num_of_startups",
