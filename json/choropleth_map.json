@@ -61,7 +61,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/homework_9.csv"
+              "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/raw/homework_9.csv"
             },
             "key": "Country",
             "fields": ["Num_of_startups"]
