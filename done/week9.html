@@ -1,6 +1,16 @@
-{
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.4.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
+  "width": 500,
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startups.csv"
@@ -86,4 +96,8 @@
     
   ],
   "config": {"title": {"font": "sans-serif", "fontSize": 14}}
-}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
