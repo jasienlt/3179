@@ -1,0 +1,367 @@
+,Country,no_corps,Year,no_company,continent,latitude,longitude
+0,Algeria,Corporations,0,0,Africa,28.033886,1.659626
+1,Argentina,Corporations,2021,1,Americas,-38.416097,-63.616672
+2,Australia,Corporations,2018,1,Oceania,-25.274398,133.775136
+3,Australia,Corporations,2019,1,Oceania,-25.274398,133.775136
+4,Australia,Corporations,2021,4,Oceania,-25.274398,133.775136
+5,Australia,Corporations,2022,2,Oceania,-25.274398,133.775136
+6,Austria,Corporations,2021,2,Europe,47.516231,14.550072
+7,Bahrain,Corporations,0,0,Asia,25.930414,50.637772
+8,Bangladesh,Corporations,0,0,Asia,23.684994,90.356331
+9,Belgium,Corporations,2019,1,Europe,50.503887,4.469936
+10,Belgium,Corporations,2021,1,Europe,50.503887,4.469936
+11,Belgium,Corporations,2022,1,Europe,50.503887,4.469936
+12,Bermuda,Corporations,2017,1,Americas,32.321384,-64.75737
+13,Bolivia,Corporations,0,0,0,-16.290154,-63.588653
+14,Brazil,Corporations,2018,2,Americas,-14.235004,-51.92528
+15,Brazil,Corporations,2019,4,Americas,-14.235004,-51.92528
+16,Brazil,Corporations,2020,3,Americas,-14.235004,-51.92528
+17,Brazil,Corporations,2021,6,Americas,-14.235004,-51.92528
+18,Brazil,Corporations,2022,2,Americas,-14.235004,-51.92528
+19,Canada,Corporations,2020,1,Americas,56.130366,-106.346771
+20,Canada,Corporations,2021,15,Americas,56.130366,-106.346771
+21,Canada,Corporations,2022,3,Americas,56.130366,-106.346771
+22,China,Corporations,2014,1,Asia,35.86166,104.195397
+23,China,Corporations,2015,19,Asia,35.86166,104.195397
+24,China,Corporations,2016,12,Asia,35.86166,104.195397
+25,China,Corporations,2017,19,Asia,35.86166,104.195397
+26,China,Corporations,2018,37,Asia,35.86166,104.195397
+27,China,Corporations,2019,23,Asia,35.86166,104.195397
+28,China,Corporations,2020,11,Asia,35.86166,104.195397
+29,China,Corporations,2021,44,Asia,35.86166,104.195397
+30,China,Corporations,2022,8,Asia,35.86166,104.195397
+31,Congo ,Corporations,0,0,0,,
+32,Cuba,Corporations,0,0,Americas,21.521757,-77.781167
+33,Denmark,Corporations,2021,2,Europe,56.26392,9.501785
+34,Egypt,Corporations,0,0,Africa,26.820553,30.802498
+35,Finland,Corporations,2018,1,Europe,61.92411,25.748151
+36,Finland,Corporations,2021,1,Europe,61.92411,25.748151
+37,Finland,Corporations,2022,2,Europe,61.92411,25.748151
+38,France,Corporations,2007,1,Europe,46.227638,2.213749
+39,France,Corporations,2015,1,Europe,46.227638,2.213749
+40,France,Corporations,2016,1,Europe,46.227638,2.213749
+41,France,Corporations,2019,3,Europe,46.227638,2.213749
+42,France,Corporations,2020,2,Europe,46.227638,2.213749
+43,France,Corporations,2021,11,Europe,46.227638,2.213749
+44,France,Corporations,2022,5,Europe,46.227638,2.213749
+45,Germany,Corporations,2017,1,Europe,51.165691,10.451526
+46,Germany,Corporations,2018,3,Europe,51.165691,10.451526
+47,Germany,Corporations,2019,4,Europe,51.165691,10.451526
+48,Germany,Corporations,2021,16,Europe,51.165691,10.451526
+49,Germany,Corporations,2022,5,Europe,51.165691,10.451526
+50,Hong Kong,Corporations,2012,1,Asia,22.396428,114.109497
+51,Hong Kong,Corporations,2017,1,Asia,22.396428,114.109497
+52,Hong Kong,Corporations,2018,1,Asia,22.396428,114.109497
+53,Hong Kong,Corporations,2019,1,Asia,22.396428,114.109497
+54,Hong Kong,Corporations,2021,2,Asia,22.396428,114.109497
+55,Hong Kong,Corporations,2022,1,Asia,22.396428,114.109497
+56,India,Corporations,2014,3,Asia,20.593684,78.96288
+57,India,Corporations,2017,1,Asia,20.593684,78.96288
+58,India,Corporations,2018,3,Asia,20.593684,78.96288
+59,India,Corporations,2019,5,Asia,20.593684,78.96288
+60,India,Corporations,2020,7,Asia,20.593684,78.96288
+61,India,Corporations,2021,34,Asia,20.593684,78.96288
+62,India,Corporations,2022,17,Asia,20.593684,78.96288
+63,Indonesia,Corporations,2017,1,Asia,-0.789275,113.921327
+64,Indonesia,Corporations,2021,4,Asia,-0.789275,113.921327
+65,Indonesia,Corporations,2022,2,Asia,-0.789275,113.921327
+66,Ireland,Corporations,2020,1,Europe,53.41291,-8.24389
+67,Ireland,Corporations,2021,2,Europe,53.41291,-8.24389
+68,Ireland,Corporations,2022,3,Europe,53.41291,-8.24389
+69,Israel,Corporations,2018,1,Asia,31.046051,34.851612
+70,Israel,Corporations,2019,1,Asia,31.046051,34.851612
+71,Israel,Corporations,2020,3,Asia,31.046051,34.851612
+72,Israel,Corporations,2021,11,Asia,31.046051,34.851612
+73,Israel,Corporations,2022,6,Asia,31.046051,34.851612
+74,Italy,Corporations,2022,1,Europe,41.87194,12.56738
+75,Japan,Corporations,2018,1,Asia,36.204824,138.252924
+76,Japan,Corporations,2019,1,Asia,36.204824,138.252924
+77,Japan,Corporations,2020,1,Asia,36.204824,138.252924
+78,Japan,Corporations,2021,2,Asia,36.204824,138.252924
+79,Japan,Corporations,2022,1,Asia,36.204824,138.252924
+80,Jordan,Corporations,0,0,Asia,30.585164,36.238414
+81,Kazakhstan,Corporations,0,0,Asia,48.019573,66.923684
+82,Kenya,Corporations,0,0,Africa,-0.023559,37.906193
+83,Kuwait,Corporations,0,0,Asia,29.31166,47.481766
+84,Lebanon,Corporations,0,0,Asia,33.854721,35.862285
+85,Liberia,Corporations,0,0,Africa,6.428055,-9.429499
+86,Liechtenstein,Corporations,0,0,Europe,47.166,9.555373
+87,Lithuania,Corporations,2019,1,Europe,55.169438,23.881275
+88,Lithuania,Corporations,2022,1,Europe,55.169438,23.881275
+89,Luxembourg,Corporations,2019,1,Europe,49.815273,6.129583
+90,Mali,Corporations,0,0,Africa,17.570692,-3.996166
+91,Mexico,Corporations,2020,1,Americas,23.634501,-102.552784
+92,Mexico,Corporations,2021,5,Americas,23.634501,-102.552784
+93,Mexico,Corporations,2022,2,Americas,23.634501,-102.552784
+94,Nepal,Corporations,0,0,Asia,28.394857,84.124008
+95,Netherlands,Corporations,2018,1,Europe,52.132633,5.291266
+96,Netherlands,Corporations,2020,3,Europe,52.132633,5.291266
+97,Netherlands,Corporations,2021,2,Europe,52.132633,5.291266
+98,Netherlands,Corporations,2022,1,Europe,52.132633,5.291266
+99,Nigeria,Corporations,2021,1,Africa,9.081999,8.675277
+100,Norway,Corporations,2021,3,Europe,60.472024,8.468946
+101,Norway,Corporations,2022,2,Europe,60.472024,8.468946
+102,Oman,Corporations,0,0,Asia,21.512583,55.923255
+103,Pakistan,Corporations,0,0,Asia,30.375321,69.345116
+104,Philippines,Corporations,2017,1,Asia,12.879721,121.774017
+105,Philippines,Corporations,2021,1,Asia,12.879721,121.774017
+106,Poland,Corporations,0,0,Europe,51.919438,19.145136
+107,Portugal,Corporations,0,0,Europe,39.399872,-8.224454
+108,Qatar,Corporations,0,0,Asia,25.354826,51.183884
+109,Russia,Corporations,0,0,0,61.52401,105.318756
+110,Saudi Arabia,Corporations,0,0,Asia,23.885942,45.079162
+111,Singapore,Corporations,2019,1,Asia,1.352083,103.819836
+112,Singapore,Corporations,2020,1,Asia,1.352083,103.819836
+113,Singapore,Corporations,2021,10,Asia,1.352083,103.819836
+114,Singapore,Corporations,2022,1,Asia,1.352083,103.819836
+115,South Africa,Corporations,2016,1,Africa,-30.559482,22.937506
+116,South Africa,Corporations,2017,1,Africa,-30.559482,22.937506
+117,South Korea,Corporations,2014,1,0,35.907757,127.766922
+118,South Korea,Corporations,2015,1,0,35.907757,127.766922
+119,South Korea,Corporations,2016,1,0,35.907757,127.766922
+120,South Korea,Corporations,2018,2,0,35.907757,127.766922
+121,South Korea,Corporations,2019,3,0,35.907757,127.766922
+122,South Korea,Corporations,2020,1,0,35.907757,127.766922
+123,South Korea,Corporations,2021,3,0,35.907757,127.766922
+124,South Korea,Corporations,2022,5,0,35.907757,127.766922
+125,Spain,Corporations,2018,1,Europe,40.463667,-3.74922
+126,Spain,Corporations,2021,1,Europe,40.463667,-3.74922
+127,Spain,Corporations,2022,2,Europe,40.463667,-3.74922
+128,Sri Lanka,Corporations,0,0,Asia,7.873054,80.771797
+129,Sweden,Corporations,2011,1,Europe,60.128161,18.643501
+130,Sweden,Corporations,2019,1,Europe,60.128161,18.643501
+131,Sweden,Corporations,2021,4,Europe,60.128161,18.643501
+132,Sweden,Corporations,2022,2,Europe,60.128161,18.643501
+133,Switzerland,Corporations,2016,1,Europe,46.818188,8.227512
+134,Switzerland,Corporations,2019,2,Europe,46.818188,8.227512
+135,Switzerland,Corporations,2021,1,Europe,46.818188,8.227512
+136,Switzerland,Corporations,2022,2,Europe,46.818188,8.227512
+137,Syria,Corporations,0,0,0,34.802075,38.996815
+138,Taiwan,Corporations,0,0,0,23.69781,120.960515
+139,Thailand,Corporations,2021,2,Asia,15.870032,100.992541
+140,Turkey,Corporations,2021,2,Asia,38.963745,35.243322
+141,Turkey,Corporations,2022,1,Asia,38.963745,35.243322
+142,United Arab Emirates,Corporations,2017,1,Asia,23.424076,53.847818
+143,United Arab Emirates,Corporations,2020,1,Asia,23.424076,53.847818
+144,United Arab Emirates,Corporations,2021,1,Asia,23.424076,53.847818
+145,United Kingdom,Corporations,2016,2,0,55.378051,-3.435973
+146,United Kingdom,Corporations,2017,5,0,55.378051,-3.435973
+147,United Kingdom,Corporations,2018,4,0,55.378051,-3.435973
+148,United Kingdom,Corporations,2019,5,0,55.378051,-3.435973
+149,United Kingdom,Corporations,2020,4,0,55.378051,-3.435973
+150,United Kingdom,Corporations,2021,17,0,55.378051,-3.435973
+151,United Kingdom,Corporations,2022,9,0,55.378051,-3.435973
+152,United States of America,Corporations,0,0,Americas,,
+153,Uruguay,Corporations,0,0,Americas,-32.522779,-55.765835
+154,Venezuela,Corporations,0,0,0,6.42375,-66.58973
+155,Bahamas,Corporations,2021,1,Americas,25.03428,-77.39628
+156,Chile,Corporations,2021,1,Americas,-35.675147,-71.542969
+157,Chile,Corporations,2022,1,Americas,-35.675147,-71.542969
+158,Colombia,Corporations,2015,1,Americas,4.570868,-74.297333
+159,Colombia,Corporations,2018,1,Americas,4.570868,-74.297333
+160,Colombia,Corporations,2022,1,Americas,4.570868,-74.297333
+161,Croatia,Corporations,2020,1,Europe,45.1,15.2
+162,Croatia,Corporations,2022,1,Europe,45.1,15.2
+163,Czech Republic,Corporations,2021,1,Europe,49.817492,15.472962
+164,Ecuador,Corporations,2022,1,Americas,-1.831239,-78.183406
+165,Estonia,Corporations,2018,1,Europe,58.595272,25.013607
+166,Estonia,Corporations,2022,1,Europe,58.595272,25.013607
+167,Malaysia,Corporations,2021,1,Asia,4.210484,101.975766
+168,Senegal,Corporations,2021,1,Africa,14.497401,-14.452362
+169,Seychelles,Corporations,2022,1,Africa,-4.679574,55.491977
+170,United States,Corporations,2011,1,0,37.09024,-95.712891
+171,United States,Corporations,2012,3,0,37.09024,-95.712891
+172,United States,Corporations,2013,3,0,37.09024,-95.712891
+173,United States,Corporations,2014,7,0,37.09024,-95.712891
+174,United States,Corporations,2015,12,0,37.09024,-95.712891
+175,United States,Corporations,2016,3,0,37.09024,-95.712891
+176,United States,Corporations,2017,12,0,37.09024,-95.712891
+177,United States,Corporations,2018,38,0,37.09024,-95.712891
+178,United States,Corporations,2019,44,0,37.09024,-95.712891
+179,United States,Corporations,2020,67,0,37.09024,-95.712891
+180,United States,Corporations,2021,311,0,37.09024,-95.712891
+181,United States,Corporations,2022,135,0,37.09024,-95.712891
+182,Vietnam,Corporations,2021,2,0,14.058324,108.277199
+183,Algeria,Startups,0,1,Africa,28.033886,1.659626
+184,Argentina,Startups,2021,1,Americas,-38.416097,-63.616672
+185,Australia,Startups,2018,20,Oceania,-25.274398,133.775136
+186,Australia,Startups,2019,20,Oceania,-25.274398,133.775136
+187,Australia,Startups,2021,20,Oceania,-25.274398,133.775136
+188,Australia,Startups,2022,20,Oceania,-25.274398,133.775136
+189,Austria,Startups,2021,7,Europe,47.516231,14.550072
+190,Bahrain,Startups,0,1,Asia,25.930414,50.637772
+191,Bangladesh,Startups,0,2,Asia,23.684994,90.356331
+192,Belgium,Startups,2019,2,Europe,50.503887,4.469936
+193,Belgium,Startups,2021,2,Europe,50.503887,4.469936
+194,Belgium,Startups,2022,2,Europe,50.503887,4.469936
+195,Bermuda,Startups,2017,4,Americas,32.321384,-64.75737
+196,Bolivia,Startups,0,1,0,-16.290154,-63.588653
+197,Brazil,Startups,2018,1,Americas,-14.235004,-51.92528
+198,Brazil,Startups,2019,1,Americas,-14.235004,-51.92528
+199,Brazil,Startups,2020,1,Americas,-14.235004,-51.92528
+200,Brazil,Startups,2021,1,Americas,-14.235004,-51.92528
+201,Brazil,Startups,2022,1,Americas,-14.235004,-51.92528
+202,Canada,Startups,2020,36,Americas,56.130366,-106.346771
+203,Canada,Startups,2021,36,Americas,56.130366,-106.346771
+204,Canada,Startups,2022,36,Americas,56.130366,-106.346771
+205,China,Startups,2014,19,Asia,35.86166,104.195397
+206,China,Startups,2015,19,Asia,35.86166,104.195397
+207,China,Startups,2016,19,Asia,35.86166,104.195397
+208,China,Startups,2017,19,Asia,35.86166,104.195397
+209,China,Startups,2018,19,Asia,35.86166,104.195397
+210,China,Startups,2019,19,Asia,35.86166,104.195397
+211,China,Startups,2020,19,Asia,35.86166,104.195397
+212,China,Startups,2021,19,Asia,35.86166,104.195397
+213,China,Startups,2022,19,Asia,35.86166,104.195397
+214,Congo ,Startups,0,1,0,,
+215,Cuba,Startups,0,26,Americas,21.521757,-77.781167
+216,Denmark,Startups,2021,8,Europe,56.26392,9.501785
+217,Egypt,Startups,0,3,Africa,26.820553,30.802498
+218,Finland,Startups,2018,11,Europe,61.92411,25.748151
+219,Finland,Startups,2021,11,Europe,61.92411,25.748151
+220,Finland,Startups,2022,11,Europe,61.92411,25.748151
+221,France,Startups,2007,69,Europe,46.227638,2.213749
+222,France,Startups,2015,69,Europe,46.227638,2.213749
+223,France,Startups,2016,69,Europe,46.227638,2.213749
+224,France,Startups,2019,69,Europe,46.227638,2.213749
+225,France,Startups,2020,69,Europe,46.227638,2.213749
+226,France,Startups,2021,69,Europe,46.227638,2.213749
+227,France,Startups,2022,69,Europe,46.227638,2.213749
+228,Germany,Startups,2017,116,Europe,51.165691,10.451526
+229,Germany,Startups,2018,116,Europe,51.165691,10.451526
+230,Germany,Startups,2019,116,Europe,51.165691,10.451526
+231,Germany,Startups,2021,116,Europe,51.165691,10.451526
+232,Germany,Startups,2022,116,Europe,51.165691,10.451526
+233,Hong Kong,Startups,2012,1,Asia,22.396428,114.109497
+234,Hong Kong,Startups,2017,1,Asia,22.396428,114.109497
+235,Hong Kong,Startups,2018,1,Asia,22.396428,114.109497
+236,Hong Kong,Startups,2019,1,Asia,22.396428,114.109497
+237,Hong Kong,Startups,2021,1,Asia,22.396428,114.109497
+238,Hong Kong,Startups,2022,1,Asia,22.396428,114.109497
+239,India,Startups,2014,3159,Asia,20.593684,78.96288
+240,India,Startups,2017,3159,Asia,20.593684,78.96288
+241,India,Startups,2018,3159,Asia,20.593684,78.96288
+242,India,Startups,2019,3159,Asia,20.593684,78.96288
+243,India,Startups,2020,3159,Asia,20.593684,78.96288
+244,India,Startups,2021,3159,Asia,20.593684,78.96288
+245,India,Startups,2022,3159,Asia,20.593684,78.96288
+246,Indonesia,Startups,2017,3,Asia,-0.789275,113.921327
+247,Indonesia,Startups,2021,3,Asia,-0.789275,113.921327
+248,Indonesia,Startups,2022,3,Asia,-0.789275,113.921327
+249,Ireland,Startups,2020,11,Europe,53.41291,-8.24389
+250,Ireland,Startups,2021,11,Europe,53.41291,-8.24389
+251,Ireland,Startups,2022,11,Europe,53.41291,-8.24389
+252,Israel,Startups,2018,2,Asia,31.046051,34.851612
+253,Israel,Startups,2019,2,Asia,31.046051,34.851612
+254,Israel,Startups,2020,2,Asia,31.046051,34.851612
+255,Israel,Startups,2021,2,Asia,31.046051,34.851612
+256,Israel,Startups,2022,2,Asia,31.046051,34.851612
+257,Italy,Startups,2022,19,Europe,41.87194,12.56738
+258,Japan,Startups,2018,52,Asia,36.204824,138.252924
+259,Japan,Startups,2019,52,Asia,36.204824,138.252924
+260,Japan,Startups,2020,52,Asia,36.204824,138.252924
+261,Japan,Startups,2021,52,Asia,36.204824,138.252924
+262,Japan,Startups,2022,52,Asia,36.204824,138.252924
+263,Jordan,Startups,0,1,Asia,30.585164,36.238414
+264,Kazakhstan,Startups,0,2,Asia,48.019573,66.923684
+265,Kenya,Startups,0,1,Africa,-0.023559,37.906193
+266,Kuwait,Startups,0,1,Asia,29.31166,47.481766
+267,Lebanon,Startups,0,3,Asia,33.854721,35.862285
+268,Liberia,Startups,0,1,Africa,6.428055,-9.429499
+269,Liechtenstein,Startups,0,1,Europe,47.166,9.555373
+270,Lithuania,Startups,2019,1,Europe,55.169438,23.881275
+271,Lithuania,Startups,2022,1,Europe,55.169438,23.881275
+272,Luxembourg,Startups,2019,3,Europe,49.815273,6.129583
+273,Mali,Startups,0,24,Africa,17.570692,-3.996166
+274,Mexico,Startups,2020,12,Americas,23.634501,-102.552784
+275,Mexico,Startups,2021,12,Americas,23.634501,-102.552784
+276,Mexico,Startups,2022,12,Americas,23.634501,-102.552784
+277,Nepal,Startups,0,1,Asia,28.394857,84.124008
+278,Netherlands,Startups,2018,37,Europe,52.132633,5.291266
+279,Netherlands,Startups,2020,37,Europe,52.132633,5.291266
+280,Netherlands,Startups,2021,37,Europe,52.132633,5.291266
+281,Netherlands,Startups,2022,37,Europe,52.132633,5.291266
+282,Nigeria,Startups,2021,6,Africa,9.081999,8.675277
+283,Norway,Startups,2021,2,Europe,60.472024,8.468946
+284,Norway,Startups,2022,2,Europe,60.472024,8.468946
+285,Oman,Startups,0,21,Asia,21.512583,55.923255
+286,Pakistan,Startups,0,4,Asia,30.375321,69.345116
+287,Philippines,Startups,2017,14,Asia,12.879721,121.774017
+288,Philippines,Startups,2021,14,Asia,12.879721,121.774017
+289,Poland,Startups,0,1,Europe,51.919438,19.145136
+290,Portugal,Startups,0,1,Europe,39.399872,-8.224454
+291,Qatar,Startups,0,25,Asia,25.354826,51.183884
+292,Russia,Startups,0,1,0,61.52401,105.318756
+293,Saudi Arabia,Startups,0,26,Asia,23.885942,45.079162
+294,Singapore,Startups,2019,29,Asia,1.352083,103.819836
+295,Singapore,Startups,2020,29,Asia,1.352083,103.819836
+296,Singapore,Startups,2021,29,Asia,1.352083,103.819836
+297,Singapore,Startups,2022,29,Asia,1.352083,103.819836
+298,South Africa,Startups,2016,2,Africa,-30.559482,22.937506
+299,South Africa,Startups,2017,2,Africa,-30.559482,22.937506
+300,South Korea,Startups,2014,19,0,35.907757,127.766922
+301,South Korea,Startups,2015,19,0,35.907757,127.766922
+302,South Korea,Startups,2016,19,0,35.907757,127.766922
+303,South Korea,Startups,2018,19,0,35.907757,127.766922
+304,South Korea,Startups,2019,19,0,35.907757,127.766922
+305,South Korea,Startups,2020,19,0,35.907757,127.766922
+306,South Korea,Startups,2021,19,0,35.907757,127.766922
+307,South Korea,Startups,2022,19,0,35.907757,127.766922
+308,Spain,Startups,2018,8,Europe,40.463667,-3.74922
+309,Spain,Startups,2021,8,Europe,40.463667,-3.74922
+310,Spain,Startups,2022,8,Europe,40.463667,-3.74922
+311,Sri Lanka,Startups,0,1,Asia,7.873054,80.771797
+312,Sweden,Startups,2011,18,Europe,60.128161,18.643501
+313,Sweden,Startups,2019,18,Europe,60.128161,18.643501
+314,Sweden,Startups,2021,18,Europe,60.128161,18.643501
+315,Sweden,Startups,2022,18,Europe,60.128161,18.643501
+316,Switzerland,Startups,2016,29,Europe,46.818188,8.227512
+317,Switzerland,Startups,2019,29,Europe,46.818188,8.227512
+318,Switzerland,Startups,2021,29,Europe,46.818188,8.227512
+319,Switzerland,Startups,2022,29,Europe,46.818188,8.227512
+320,Syria,Startups,0,1,0,34.802075,38.996815
+321,Taiwan,Startups,0,4,0,23.69781,120.960515
+322,Thailand,Startups,2021,3,Asia,15.870032,100.992541
+323,Turkey,Startups,2021,2,Asia,38.963745,35.243322
+324,Turkey,Startups,2022,2,Asia,38.963745,35.243322
+325,United Arab Emirates,Startups,2017,67,Asia,23.424076,53.847818
+326,United Arab Emirates,Startups,2020,67,Asia,23.424076,53.847818
+327,United Arab Emirates,Startups,2021,67,Asia,23.424076,53.847818
+328,United Kingdom,Startups,2016,112,0,55.378051,-3.435973
+329,United Kingdom,Startups,2017,112,0,55.378051,-3.435973
+330,United Kingdom,Startups,2018,112,0,55.378051,-3.435973
+331,United Kingdom,Startups,2019,112,0,55.378051,-3.435973
+332,United Kingdom,Startups,2020,112,0,55.378051,-3.435973
+333,United Kingdom,Startups,2021,112,0,55.378051,-3.435973
+334,United Kingdom,Startups,2022,112,0,55.378051,-3.435973
+335,United States of America,Startups,0,824,Americas,,
+336,Uruguay,Startups,0,5,Americas,-32.522779,-55.765835
+337,Venezuela,Startups,0,1,0,6.42375,-66.58973
+338,Bahamas,Startups,2021,0,Americas,25.03428,-77.39628
+339,Chile,Startups,2021,0,Americas,-35.675147,-71.542969
+340,Chile,Startups,2022,0,Americas,-35.675147,-71.542969
+341,Colombia,Startups,2015,0,Americas,4.570868,-74.297333
+342,Colombia,Startups,2018,0,Americas,4.570868,-74.297333
+343,Colombia,Startups,2022,0,Americas,4.570868,-74.297333
+344,Croatia,Startups,2020,0,Europe,45.1,15.2
+345,Croatia,Startups,2022,0,Europe,45.1,15.2
+346,Czech Republic,Startups,2021,0,Europe,49.817492,15.472962
+347,Ecuador,Startups,2022,0,Americas,-1.831239,-78.183406
+348,Estonia,Startups,2018,0,Europe,58.595272,25.013607
+349,Estonia,Startups,2022,0,Europe,58.595272,25.013607
+350,Malaysia,Startups,2021,0,Asia,4.210484,101.975766
+351,Senegal,Startups,2021,0,Africa,14.497401,-14.452362
+352,Seychelles,Startups,2022,0,Africa,-4.679574,55.491977
+353,United States,Startups,2011,0,0,37.09024,-95.712891
+354,United States,Startups,2012,0,0,37.09024,-95.712891
+355,United States,Startups,2013,0,0,37.09024,-95.712891
+356,United States,Startups,2014,0,0,37.09024,-95.712891
+357,United States,Startups,2015,0,0,37.09024,-95.712891
+358,United States,Startups,2016,0,0,37.09024,-95.712891
+359,United States,Startups,2017,0,0,37.09024,-95.712891
+360,United States,Startups,2018,0,0,37.09024,-95.712891
+361,United States,Startups,2019,0,0,37.09024,-95.712891
+362,United States,Startups,2020,0,0,37.09024,-95.712891
+363,United States,Startups,2021,0,0,37.09024,-95.712891
+364,United States,Startups,2022,0,0,37.09024,-95.712891
+365,Vietnam,Startups,2021,0,0,14.058324,108.277199
