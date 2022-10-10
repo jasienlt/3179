@@ -1,78 +1,367 @@
-,Country,no_corps,no_startups,continent
-0,Algeria,1.0,0,Africa
-1,Argentina,1.0,1.0,Americas
-2,Australia,20.0,8.0,Oceania
-3,Austria,7.0,2.0,Europe
-4,Bahrain,1.0,0,Asia
-5,Bangladesh,2.0,0,Asia
-6,Belgium,2.0,3.0,Europe
-7,Bermuda,4.0,1.0,Americas
-8,Bolivia,1.0,0,0
-9,Brazil,1.0,17.0,Americas
-10,Canada,36.0,19.0,Americas
-11,China,19.0,174.0,Asia
-12,Congo ,1.0,0,0
-13,Cuba,26.0,0,Americas
-14,Denmark,8.0,2.0,Europe
-15,Egypt,3.0,0,Africa
-16,Finland,11.0,4.0,Europe
-17,France,69.0,24.0,Europe
-18,Germany,116.0,29.0,Europe
-19,Hong Kong,1.0,7.0,Asia
-20,India,3159.0,70.0,Asia
-21,Indonesia,3.0,7.0,Asia
-22,Ireland,11.0,6.0,Europe
-23,Israel,2.0,22.0,Asia
-24,Italy,19.0,1.0,Europe
-25,Japan,52.0,6.0,Asia
-26,Jordan,1.0,0,Asia
-27,Kazakhstan,2.0,0,Asia
-28,Kenya,1.0,0,Africa
-29,Kuwait,1.0,0,Asia
-30,Lebanon,3.0,0,Asia
-31,Liberia,1.0,0,Africa
-32,Liechtenstein,1.0,0,Europe
-33,Lithuania,1.0,2.0,Europe
-34,Luxembourg,3.0,1.0,Europe
-35,Mali,24.0,0,Africa
-36,Mexico,12.0,8.0,Americas
-37,Nepal,1.0,0,Asia
-38,Netherlands,37.0,7.0,Europe
-39,Nigeria,6.0,1.0,Africa
-40,Norway,2.0,5.0,Europe
-41,Oman,21.0,0,Asia
-42,Pakistan,4.0,0,Asia
-43,Philippines,14.0,2.0,Asia
-44,Poland,1.0,0,Europe
-45,Portugal,1.0,0,Europe
-46,Qatar,25.0,0,Asia
-47,Russia,1.0,0,0
-48,Saudi Arabia,26.0,0,Asia
-49,Singapore,29.0,13.0,Asia
-50,South Africa,2.0,2.0,Africa
-51,South Korea,19.0,17.0,0
-52,Spain,8.0,4.0,Europe
-53,Sri Lanka,1.0,0,Asia
-54,Sweden,18.0,8.0,Europe
-55,Switzerland,29.0,6.0,Europe
-56,Syria,1.0,0,0
-57,Taiwan,4.0,0,0
-58,Thailand,3.0,2.0,Asia
-59,Turkey,2.0,3.0,Asia
-60,United Arab Emirates,67.0,3.0,Asia
-61,United Kingdom,112.0,46.0,0
-62,United States of America,824.0,0,Americas
-63,Uruguay,5.0,0,Americas
-64,Venezuela,1.0,0,0
-65,Bahamas,0,1.0,Americas
-66,Chile,0,2.0,Americas
-67,Colombia,0,3.0,Americas
-68,Croatia,0,2.0,Europe
-69,Czech Republic,0,1.0,Europe
-70,Ecuador,0,1.0,Americas
-71,Estonia,0,2.0,Europe
-72,Malaysia,0,1.0,Asia
-73,Senegal,0,1.0,Africa
-74,Seychelles,0,1.0,Africa
-75,United States,0,636.0,0
-76,Vietnam,0,2.0,0
+Country,no_corps,Year,no_company,continent
+Algeria,Corporations,0,0,Africa
+Argentina,Corporations,2021,1,Americas
+Australia,Corporations,2018,1,Oceania
+Australia,Corporations,2019,1,Oceania
+Australia,Corporations,2021,4,Oceania
+Australia,Corporations,2022,2,Oceania
+Austria,Corporations,2021,2,Europe
+Bahrain,Corporations,0,0,Asia
+Bangladesh,Corporations,0,0,Asia
+Belgium,Corporations,2019,1,Europe
+Belgium,Corporations,2021,1,Europe
+Belgium,Corporations,2022,1,Europe
+Bermuda,Corporations,2017,1,Americas
+Bolivia,Corporations,0,0,0
+Brazil,Corporations,2018,2,Americas
+Brazil,Corporations,2019,4,Americas
+Brazil,Corporations,2020,3,Americas
+Brazil,Corporations,2021,6,Americas
+Brazil,Corporations,2022,2,Americas
+Canada,Corporations,2020,1,Americas
+Canada,Corporations,2021,15,Americas
+Canada,Corporations,2022,3,Americas
+China,Corporations,2014,1,Asia
+China,Corporations,2015,19,Asia
+China,Corporations,2016,12,Asia
+China,Corporations,2017,19,Asia
+China,Corporations,2018,37,Asia
+China,Corporations,2019,23,Asia
+China,Corporations,2020,11,Asia
+China,Corporations,2021,44,Asia
+China,Corporations,2022,8,Asia
+Congo ,Corporations,0,0,0
+Cuba,Corporations,0,0,Americas
+Denmark,Corporations,2021,2,Europe
+Egypt,Corporations,0,0,Africa
+Finland,Corporations,2018,1,Europe
+Finland,Corporations,2021,1,Europe
+Finland,Corporations,2022,2,Europe
+France,Corporations,2007,1,Europe
+France,Corporations,2015,1,Europe
+France,Corporations,2016,1,Europe
+France,Corporations,2019,3,Europe
+France,Corporations,2020,2,Europe
+France,Corporations,2021,11,Europe
+France,Corporations,2022,5,Europe
+Germany,Corporations,2017,1,Europe
+Germany,Corporations,2018,3,Europe
+Germany,Corporations,2019,4,Europe
+Germany,Corporations,2021,16,Europe
+Germany,Corporations,2022,5,Europe
+Hong Kong,Corporations,2012,1,Asia
+Hong Kong,Corporations,2017,1,Asia
+Hong Kong,Corporations,2018,1,Asia
+Hong Kong,Corporations,2019,1,Asia
+Hong Kong,Corporations,2021,2,Asia
+Hong Kong,Corporations,2022,1,Asia
+India,Corporations,2014,3,Asia
+India,Corporations,2017,1,Asia
+India,Corporations,2018,3,Asia
+India,Corporations,2019,5,Asia
+India,Corporations,2020,7,Asia
+India,Corporations,2021,34,Asia
+India,Corporations,2022,17,Asia
+Indonesia,Corporations,2017,1,Asia
+Indonesia,Corporations,2021,4,Asia
+Indonesia,Corporations,2022,2,Asia
+Ireland,Corporations,2020,1,Europe
+Ireland,Corporations,2021,2,Europe
+Ireland,Corporations,2022,3,Europe
+Israel,Corporations,2018,1,Asia
+Israel,Corporations,2019,1,Asia
+Israel,Corporations,2020,3,Asia
+Israel,Corporations,2021,11,Asia
+Israel,Corporations,2022,6,Asia
+Italy,Corporations,2022,1,Europe
+Japan,Corporations,2018,1,Asia
+Japan,Corporations,2019,1,Asia
+Japan,Corporations,2020,1,Asia
+Japan,Corporations,2021,2,Asia
+Japan,Corporations,2022,1,Asia
+Jordan,Corporations,0,0,Asia
+Kazakhstan,Corporations,0,0,Asia
+Kenya,Corporations,0,0,Africa
+Kuwait,Corporations,0,0,Asia
+Lebanon,Corporations,0,0,Asia
+Liberia,Corporations,0,0,Africa
+Liechtenstein,Corporations,0,0,Europe
+Lithuania,Corporations,2019,1,Europe
+Lithuania,Corporations,2022,1,Europe
+Luxembourg,Corporations,2019,1,Europe
+Mali,Corporations,0,0,Africa
+Mexico,Corporations,2020,1,Americas
+Mexico,Corporations,2021,5,Americas
+Mexico,Corporations,2022,2,Americas
+Nepal,Corporations,0,0,Asia
+Netherlands,Corporations,2018,1,Europe
+Netherlands,Corporations,2020,3,Europe
+Netherlands,Corporations,2021,2,Europe
+Netherlands,Corporations,2022,1,Europe
+Nigeria,Corporations,2021,1,Africa
+Norway,Corporations,2021,3,Europe
+Norway,Corporations,2022,2,Europe
+Oman,Corporations,0,0,Asia
+Pakistan,Corporations,0,0,Asia
+Philippines,Corporations,2017,1,Asia
+Philippines,Corporations,2021,1,Asia
+Poland,Corporations,0,0,Europe
+Portugal,Corporations,0,0,Europe
+Qatar,Corporations,0,0,Asia
+Russia,Corporations,0,0,0
+Saudi Arabia,Corporations,0,0,Asia
+Singapore,Corporations,2019,1,Asia
+Singapore,Corporations,2020,1,Asia
+Singapore,Corporations,2021,10,Asia
+Singapore,Corporations,2022,1,Asia
+South Africa,Corporations,2016,1,Africa
+South Africa,Corporations,2017,1,Africa
+South Korea,Corporations,2014,1,0
+South Korea,Corporations,2015,1,0
+South Korea,Corporations,2016,1,0
+South Korea,Corporations,2018,2,0
+South Korea,Corporations,2019,3,0
+South Korea,Corporations,2020,1,0
+South Korea,Corporations,2021,3,0
+South Korea,Corporations,2022,5,0
+Spain,Corporations,2018,1,Europe
+Spain,Corporations,2021,1,Europe
+Spain,Corporations,2022,2,Europe
+Sri Lanka,Corporations,0,0,Asia
+Sweden,Corporations,2011,1,Europe
+Sweden,Corporations,2019,1,Europe
+Sweden,Corporations,2021,4,Europe
+Sweden,Corporations,2022,2,Europe
+Switzerland,Corporations,2016,1,Europe
+Switzerland,Corporations,2019,2,Europe
+Switzerland,Corporations,2021,1,Europe
+Switzerland,Corporations,2022,2,Europe
+Syria,Corporations,0,0,0
+Taiwan,Corporations,0,0,0
+Thailand,Corporations,2021,2,Asia
+Turkey,Corporations,2021,2,Asia
+Turkey,Corporations,2022,1,Asia
+United Arab Emirates,Corporations,2017,1,Asia
+United Arab Emirates,Corporations,2020,1,Asia
+United Arab Emirates,Corporations,2021,1,Asia
+United Kingdom,Corporations,2016,2,0
+United Kingdom,Corporations,2017,5,0
+United Kingdom,Corporations,2018,4,0
+United Kingdom,Corporations,2019,5,0
+United Kingdom,Corporations,2020,4,0
+United Kingdom,Corporations,2021,17,0
+United Kingdom,Corporations,2022,9,0
+United States of America,Corporations,0,0,Americas
+Uruguay,Corporations,0,0,Americas
+Venezuela,Corporations,0,0,0
+Bahamas,Corporations,2021,1,Americas
+Chile,Corporations,2021,1,Americas
+Chile,Corporations,2022,1,Americas
+Colombia,Corporations,2015,1,Americas
+Colombia,Corporations,2018,1,Americas
+Colombia,Corporations,2022,1,Americas
+Croatia,Corporations,2020,1,Europe
+Croatia,Corporations,2022,1,Europe
+Czech Republic,Corporations,2021,1,Europe
+Ecuador,Corporations,2022,1,Americas
+Estonia,Corporations,2018,1,Europe
+Estonia,Corporations,2022,1,Europe
+Malaysia,Corporations,2021,1,Asia
+Senegal,Corporations,2021,1,Africa
+Seychelles,Corporations,2022,1,Africa
+United States,Corporations,2011,1,0
+United States,Corporations,2012,3,0
+United States,Corporations,2013,3,0
+United States,Corporations,2014,7,0
+United States,Corporations,2015,12,0
+United States,Corporations,2016,3,0
+United States,Corporations,2017,12,0
+United States,Corporations,2018,38,0
+United States,Corporations,2019,44,0
+United States,Corporations,2020,67,0
+United States,Corporations,2021,311,0
+United States,Corporations,2022,135,0
+Vietnam,Corporations,2021,2,0
+Algeria,Startups,0,1,Africa
+Argentina,Startups,2021,1,Americas
+Australia,Startups,2018,20,Oceania
+Australia,Startups,2019,20,Oceania
+Australia,Startups,2021,20,Oceania
+Australia,Startups,2022,20,Oceania
+Austria,Startups,2021,7,Europe
+Bahrain,Startups,0,1,Asia
+Bangladesh,Startups,0,2,Asia
+Belgium,Startups,2019,2,Europe
+Belgium,Startups,2021,2,Europe
+Belgium,Startups,2022,2,Europe
+Bermuda,Startups,2017,4,Americas
+Bolivia,Startups,0,1,0
+Brazil,Startups,2018,1,Americas
+Brazil,Startups,2019,1,Americas
+Brazil,Startups,2020,1,Americas
+Brazil,Startups,2021,1,Americas
+Brazil,Startups,2022,1,Americas
+Canada,Startups,2020,36,Americas
+Canada,Startups,2021,36,Americas
+Canada,Startups,2022,36,Americas
+China,Startups,2014,19,Asia
+China,Startups,2015,19,Asia
+China,Startups,2016,19,Asia
+China,Startups,2017,19,Asia
+China,Startups,2018,19,Asia
+China,Startups,2019,19,Asia
+China,Startups,2020,19,Asia
+China,Startups,2021,19,Asia
+China,Startups,2022,19,Asia
+Congo ,Startups,0,1,0
+Cuba,Startups,0,26,Americas
+Denmark,Startups,2021,8,Europe
+Egypt,Startups,0,3,Africa
+Finland,Startups,2018,11,Europe
+Finland,Startups,2021,11,Europe
+Finland,Startups,2022,11,Europe
+France,Startups,2007,69,Europe
+France,Startups,2015,69,Europe
+France,Startups,2016,69,Europe
+France,Startups,2019,69,Europe
+France,Startups,2020,69,Europe
+France,Startups,2021,69,Europe
+France,Startups,2022,69,Europe
+Germany,Startups,2017,116,Europe
+Germany,Startups,2018,116,Europe
+Germany,Startups,2019,116,Europe
+Germany,Startups,2021,116,Europe
+Germany,Startups,2022,116,Europe
+Hong Kong,Startups,2012,1,Asia
+Hong Kong,Startups,2017,1,Asia
+Hong Kong,Startups,2018,1,Asia
+Hong Kong,Startups,2019,1,Asia
+Hong Kong,Startups,2021,1,Asia
+Hong Kong,Startups,2022,1,Asia
+India,Startups,2014,3159,Asia
+India,Startups,2017,3159,Asia
+India,Startups,2018,3159,Asia
+India,Startups,2019,3159,Asia
+India,Startups,2020,3159,Asia
+India,Startups,2021,3159,Asia
+India,Startups,2022,3159,Asia
+Indonesia,Startups,2017,3,Asia
+Indonesia,Startups,2021,3,Asia
+Indonesia,Startups,2022,3,Asia
+Ireland,Startups,2020,11,Europe
+Ireland,Startups,2021,11,Europe
+Ireland,Startups,2022,11,Europe
+Israel,Startups,2018,2,Asia
+Israel,Startups,2019,2,Asia
+Israel,Startups,2020,2,Asia
+Israel,Startups,2021,2,Asia
+Israel,Startups,2022,2,Asia
+Italy,Startups,2022,19,Europe
+Japan,Startups,2018,52,Asia
+Japan,Startups,2019,52,Asia
+Japan,Startups,2020,52,Asia
+Japan,Startups,2021,52,Asia
+Japan,Startups,2022,52,Asia
+Jordan,Startups,0,1,Asia
+Kazakhstan,Startups,0,2,Asia
+Kenya,Startups,0,1,Africa
+Kuwait,Startups,0,1,Asia
+Lebanon,Startups,0,3,Asia
+Liberia,Startups,0,1,Africa
+Liechtenstein,Startups,0,1,Europe
+Lithuania,Startups,2019,1,Europe
+Lithuania,Startups,2022,1,Europe
+Luxembourg,Startups,2019,3,Europe
+Mali,Startups,0,24,Africa
+Mexico,Startups,2020,12,Americas
+Mexico,Startups,2021,12,Americas
+Mexico,Startups,2022,12,Americas
+Nepal,Startups,0,1,Asia
+Netherlands,Startups,2018,37,Europe
+Netherlands,Startups,2020,37,Europe
+Netherlands,Startups,2021,37,Europe
+Netherlands,Startups,2022,37,Europe
+Nigeria,Startups,2021,6,Africa
+Norway,Startups,2021,2,Europe
+Norway,Startups,2022,2,Europe
+Oman,Startups,0,21,Asia
+Pakistan,Startups,0,4,Asia
+Philippines,Startups,2017,14,Asia
+Philippines,Startups,2021,14,Asia
+Poland,Startups,0,1,Europe
+Portugal,Startups,0,1,Europe
+Qatar,Startups,0,25,Asia
+Russia,Startups,0,1,0
+Saudi Arabia,Startups,0,26,Asia
+Singapore,Startups,2019,29,Asia
+Singapore,Startups,2020,29,Asia
+Singapore,Startups,2021,29,Asia
+Singapore,Startups,2022,29,Asia
+South Africa,Startups,2016,2,Africa
+South Africa,Startups,2017,2,Africa
+South Korea,Startups,2014,19,0
+South Korea,Startups,2015,19,0
+South Korea,Startups,2016,19,0
+South Korea,Startups,2018,19,0
+South Korea,Startups,2019,19,0
+South Korea,Startups,2020,19,0
+South Korea,Startups,2021,19,0
+South Korea,Startups,2022,19,0
+Spain,Startups,2018,8,Europe
+Spain,Startups,2021,8,Europe
+Spain,Startups,2022,8,Europe
+Sri Lanka,Startups,0,1,Asia
+Sweden,Startups,2011,18,Europe
+Sweden,Startups,2019,18,Europe
+Sweden,Startups,2021,18,Europe
+Sweden,Startups,2022,18,Europe
+Switzerland,Startups,2016,29,Europe
+Switzerland,Startups,2019,29,Europe
+Switzerland,Startups,2021,29,Europe
+Switzerland,Startups,2022,29,Europe
+Syria,Startups,0,1,0
+Taiwan,Startups,0,4,0
+Thailand,Startups,2021,3,Asia
+Turkey,Startups,2021,2,Asia
+Turkey,Startups,2022,2,Asia
+United Arab Emirates,Startups,2017,67,Asia
+United Arab Emirates,Startups,2020,67,Asia
+United Arab Emirates,Startups,2021,67,Asia
+United Kingdom,Startups,2016,112,0
+United Kingdom,Startups,2017,112,0
+United Kingdom,Startups,2018,112,0
+United Kingdom,Startups,2019,112,0
+United Kingdom,Startups,2020,112,0
+United Kingdom,Startups,2021,112,0
+United Kingdom,Startups,2022,112,0
+United States of America,Startups,0,824,Americas
+Uruguay,Startups,0,5,Americas
+Venezuela,Startups,0,1,0
+Bahamas,Startups,2021,0,Americas
+Chile,Startups,2021,0,Americas
+Chile,Startups,2022,0,Americas
+Colombia,Startups,2015,0,Americas
+Colombia,Startups,2018,0,Americas
+Colombia,Startups,2022,0,Americas
+Croatia,Startups,2020,0,Europe
+Croatia,Startups,2022,0,Europe
+Czech Republic,Startups,2021,0,Europe
+Ecuador,Startups,2022,0,Americas
+Estonia,Startups,2018,0,Europe
+Estonia,Startups,2022,0,Europe
+Malaysia,Startups,2021,0,Asia
+Senegal,Startups,2021,0,Africa
+Seychelles,Startups,2022,0,Africa
+United States,Startups,2011,0,0
+United States,Startups,2012,0,0
+United States,Startups,2013,0,0
+United States,Startups,2014,0,0
+United States,Startups,2015,0,0
+United States,Startups,2016,0,0
+United States,Startups,2017,0,0
+United States,Startups,2018,0,0
+United States,Startups,2019,0,0
+United States,Startups,2020,0,0
+United States,Startups,2021,0,0
+United States,Startups,2022,0,0
+Vietnam,Startups,2021,0,0
