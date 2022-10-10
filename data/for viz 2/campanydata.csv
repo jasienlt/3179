@@ -1,4 +1,4 @@
-campany_name,rating,headquarter,headquarter,num_of_locations,pub_or_pri,how long since founded,employees,reviews,salaries,jobs,interviews,country,continent
+Company Name,Rating,Locations,Headquarter,Number of locations,Public or private,How long since founded,Number of employees,Number of reviews,Amount of salaries,Number of jobs,Number of interviews,Country,Continent
 TCS ,3.9,"Mumbai,Maharashtra + 263 more",Mumbai,264,Public,54,1 Lakh+ Employees (India),45700,534900,939,3300,India,Asia
 Accenture ,4.2,Dublin + 142 more,Dublin,142,Public,33,1 Lakh+ Employees (India),30700,382600,4600,2500,Ireland,Europe
 Cognizant ,4,"Teaneck, New Jersey. + 93 more",Teaneck,94,Private,28,1 Lakh+ Employees (India),27700,376900,697,2100,United States of America,Americas
