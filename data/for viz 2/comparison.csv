@@ -1,0 +1,78 @@
+,Country,no_corps,no_startups,continent
+0,Algeria,1.0,0,Africa
+1,Argentina,1.0,1.0,Americas
+2,Australia,20.0,8.0,Oceania
+3,Austria,7.0,2.0,Europe
+4,Bahrain,1.0,0,Asia
+5,Bangladesh,2.0,0,Asia
+6,Belgium,2.0,3.0,Europe
+7,Bermuda,4.0,1.0,Americas
+8,Bolivia,1.0,0,0
+9,Brazil,1.0,17.0,Americas
+10,Canada,36.0,19.0,Americas
+11,China,19.0,174.0,Asia
+12,Congo ,1.0,0,0
+13,Cuba,26.0,0,Americas
+14,Denmark,8.0,2.0,Europe
+15,Egypt,3.0,0,Africa
+16,Finland,11.0,4.0,Europe
+17,France,69.0,24.0,Europe
+18,Germany,116.0,29.0,Europe
+19,Hong Kong,1.0,7.0,Asia
+20,India,3159.0,70.0,Asia
+21,Indonesia,3.0,7.0,Asia
+22,Ireland,11.0,6.0,Europe
+23,Israel,2.0,22.0,Asia
+24,Italy,19.0,1.0,Europe
+25,Japan,52.0,6.0,Asia
+26,Jordan,1.0,0,Asia
+27,Kazakhstan,2.0,0,Asia
+28,Kenya,1.0,0,Africa
+29,Kuwait,1.0,0,Asia
+30,Lebanon,3.0,0,Asia
+31,Liberia,1.0,0,Africa
+32,Liechtenstein,1.0,0,Europe
+33,Lithuania,1.0,2.0,Europe
+34,Luxembourg,3.0,1.0,Europe
+35,Mali,24.0,0,Africa
+36,Mexico,12.0,8.0,Americas
+37,Nepal,1.0,0,Asia
+38,Netherlands,37.0,7.0,Europe
+39,Nigeria,6.0,1.0,Africa
+40,Norway,2.0,5.0,Europe
+41,Oman,21.0,0,Asia
+42,Pakistan,4.0,0,Asia
+43,Philippines,14.0,2.0,Asia
+44,Poland,1.0,0,Europe
+45,Portugal,1.0,0,Europe
+46,Qatar,25.0,0,Asia
+47,Russia,1.0,0,0
+48,Saudi Arabia,26.0,0,Asia
+49,Singapore,29.0,13.0,Asia
+50,South Africa,2.0,2.0,Africa
+51,South Korea,19.0,17.0,0
+52,Spain,8.0,4.0,Europe
+53,Sri Lanka,1.0,0,Asia
+54,Sweden,18.0,8.0,Europe
+55,Switzerland,29.0,6.0,Europe
+56,Syria,1.0,0,0
+57,Taiwan,4.0,0,0
+58,Thailand,3.0,2.0,Asia
+59,Turkey,2.0,3.0,Asia
+60,United Arab Emirates,67.0,3.0,Asia
+61,United Kingdom,112.0,46.0,0
+62,United States of America,824.0,0,Americas
+63,Uruguay,5.0,0,Americas
+64,Venezuela,1.0,0,0
+65,Bahamas,0,1.0,Americas
+66,Chile,0,2.0,Americas
+67,Colombia,0,3.0,Americas
+68,Croatia,0,2.0,Europe
+69,Czech Republic,0,1.0,Europe
+70,Ecuador,0,1.0,Americas
+71,Estonia,0,2.0,Europe
+72,Malaysia,0,1.0,Asia
+73,Senegal,0,1.0,Africa
+74,Seychelles,0,1.0,Africa
+75,United States,0,636.0,0
+76,Vietnam,0,2.0,0
