@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bump chart",
+    "data": {
+      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/comparison.csv"
+    },
+    "transform": [
+      {"filter":"datum.continent != 0"},
+      {"filter":"datum.Year != 0"},
+      {"field": "datum.no_corps == 'Startups'"},
+      {"aggregate": [
+        {
+          "op": "sum",
+          "field": "no_company",
+          "as": "no_company1"
+  
+        }],
+        "groupby": ["continent,Year"]
+      },
+      {
+        "window": [{"op": "rank", "as": "ranking"}],
+        "sort": [{"field": "no_company1", "order": "descending"}],
+        "groupby": ["continent"]
+    }
+    ],
+    "mark": {"type": "line", "point": true},
+    "encoding": {
+      "x": {"field": "Year", "type": "temporal"},
+      "y": {"field": "ranking", "type": "ordinal"},
+      "color":{
+        "field":"continent","type":"nominal"
+      },
+      "tooltip": [
+        {"field": "Year", "type": "temporal"},
+        {"field": "ranking", "type": "ordinal"},
+        {"field": "continent", "type": "nominal"}
+      ]
+    }
+  }
