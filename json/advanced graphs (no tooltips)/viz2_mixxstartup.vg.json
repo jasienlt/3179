@@ -1,0 +1,149 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 550,
+    "data": {
+      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startups.csv"
+    },
+    
+    "params": [
+      {
+        "name":"Continent_selection",
+        "bind":{
+          "input": "select",
+          "options": [
+            null,
+            "Africa",
+            "Americas",
+            "Asia",
+            "Europe",
+            "Oceania"
+          ],
+          "labels": [
+            "Show All",
+            "Africa",
+            "Americas",
+            "Asia",
+            "Europe",
+            "Oceania"
+          ],
+          "name": "Continent Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Continent != 0"},
+      {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
+      
+    ],
+    "vconcat": [
+        
+        {
+          "width": 500,
+          "height": 250,
+          "mark": "line",
+          "title":"Number of startups within different continents",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "timeUnit": "year",
+              "scale": {"domain": {"param": "time_brush"}},
+              "axis": {"title": "", "tickCount": 5, "grid": false}
+            },
+            "y": {"aggregate": "count", "title": "Number of startups"},
+            "color": {"field": "Continent", "type": "nominal"},
+            "tooltip": [
+              {"field": "Year", "type": "temporal", "title": "Year"},
+              {"field": "Continent", "type": "nominal", "title": "Continent"},
+              {"field": "__count", "type": "quantitative","title":"Number of startups"}]
+            
+            }
+          },
+        {
+            "width": 500,
+            "height": 500,
+            "title": "Number of startups with different industries",
+            "transform": [
+              {
+                "aggregate":[{
+                  "op":"sum",
+                  "field":"Count",
+                  "as":"Number of companies"
+                }],
+                "groupby": ["Industry","Year","Continent"]
+              }
+            ],
+            "selection": {
+              "number_highlight": {
+              "type": "multi",
+              "fields": ["Industry"],
+              "bind": "legend"
+              }
+              },
+            "mark": "circle",
+            "encoding": {
+              "x": {
+                "field": "Year",
+                "timeUnit": "year",
+                "scale": {"domain": {"param": "time_brush"}},
+                "axis": {"title": "", "tickCount": 5, "grid": false}
+              },
+              "y": {"field": "Industry", "type":"nominal","title": "Industry"},
+              "color": {
+                "field": "Industry",
+                "scale": {
+                  "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
+                },
+              "size": {
+                "field":"Number of companies",
+                "type":"quantitative",
+                "scale": {
+                    "type":"threshold",
+                    "domain":[10,20,30,50,150],
+                    "range": [10,50,150,200,300]
+                }
+              },
+              "opacity": {
+                "condition": {"selection": "number_highlight", "value": 1},
+                "value": 0.2
+                },
+              
+              "tooltip": [
+              {"field": "Year", "type": "temporal", "title": "Year"},
+              {"field": "Continent", "type": "nominal", "title": "Continent"},
+              {"field": "Industry", "type": "nominal", "title": "Industry"},
+              {"field": "Number of companies", "type": "quantitative","title":"Number of startups"}]
+            
+              
+              }
+      }},
+      {
+        "width": 500,
+        "height": 150,
+        "mark": "line",
+        "title": "Use this line chart to filter out the data based on time",
+        "params": [
+          {
+            "name": "time_brush",
+            "select": {"type": "interval", "encodings": ["x"]}
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal",
+            "timeUnit": "year",
+            
+            "axis": {"title": "", "format": "%Y"}
+          },
+          "y": {
+            "aggregate": "count",
+            "axis": {"tickCount": 3, "grid": false},
+            "title": "Number of startups"
+          }
+        }
+      }
+    ],
+    "resolve": {"scale": {"color": "independent"}},
+    "config": {"title": {"font": "sans-serif", "fontSize": 14}}
+  }
