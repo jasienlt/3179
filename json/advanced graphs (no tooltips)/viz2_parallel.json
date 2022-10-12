@@ -33,7 +33,7 @@
         "x": {"field": "key"}
       }
     }, {
-      "mark": "line",
+      "mark": {"type":"line","point":true},
       "encoding": {
         "color": {"type": "nominal", "field": "Continent"},
         "detail": {"type": "nominal", "field": "index"},

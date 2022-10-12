@@ -74,9 +74,29 @@
 
             <hr class="hr3">
 
+
+            <h2>Chart 5:</h2>
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <div id="vis5" class="vis-container"></div>
+                </div>
+            </div>
+
+            <h2>Chart 6:</h2>
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <div id="vis6" class="vis-container"></div>
+                </div>
+            </div>
+            <!-- end pure grid group -->
+
+            <hr class="hr3">
+
             <div class="pure-g">
                 <div class="pure-u-1-1 small-font">
-                    <p>&copy; 2021 <a href="https://github.com/KaneSec/vega_lite" target="_blank">Kane Li</a>. Copyright reserved. Those examples are for educational purpose only.
+                    <p>&copy; 2022 <a href="https://github.com/jasienlt/3179" target="_blank">Lam Thy Ngo</a>. Copyright reserved. 
                 </div>
             </div>
 
@@ -84,17 +104,23 @@
 
 
     <script type="text/javascript">
-        var specVis1 = "1_overview_detail.vg.json";
+        var specVis1 = "viz2_mixbigcorp.json";
         vegaEmbed('#vis1', specVis1);
 
-        var specVis2 = "2_interactive.vg.json";
+        var specVis2 = "viz2_mixstartup.json";
         vegaEmbed('#vis2', specVis2);
 
-        var specVis3 = "3_properties.vg.json";
+        var specVis3 = "viz2_parallel.json";
         vegaEmbed('#vis3', specVis3);
 
-        var specVis4 = "4_small_multiples.vg.json";
+        var specVis4 = "viz2_line_chart.json";
         vegaEmbed('#vis4', specVis4);
+
+        var specVis5 = "viz2_mixxstartup.json";
+        vegaEmbed('#vis5', specVis4);
+
+        var specVis6 = "viz2_bump.json";
+        vegaEmbed('#vis6', specVis4);
 
         print(brush)
     </script>

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart",
+  "title": "Ranking in number of startups around continents (Sep 2022)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/comparison.csv"
+  },
+  "vconcat":[
+    {
+    "width":500,
+    "height":250,
+    "transform": [
+      {"filter":"datum.continent != 0"},
+      {"filter":"datum.Year != 0"},
+      {"field": "datum.no_corps == 'Startups'"},
+      {"aggregate": [
+        {
+          "op": "sum",
+          "field": "no_company",
+          "as": "no_company1"
+  
+        }],
+        "groupby": ["continent","Year"]
+      },
+      {
+        "window": [{"op": "rank", "as": "ranking"}],
+        "sort": [{"field": "no_company1", "order": "descending"}],
+        "groupby": ["Year"]
+    }
+    ],
+    "mark": {"type": "circle", "point": true},
+    "params":[
+      {"name":"brush","select":{"type": "interval", "encodings": ["x"]}}
+    ],
+    "encoding": {
+      "x": {"field": "Year", "type": "temporal"},
+      "y": {"field": "ranking", "type": "ordinal","title":"Rank"},
+      "color":{
+        "field":"continent","type":"nominal"
+      },
+      "tooltip": [
+        {"field": "Year", "type": "temporal"},
+        {"field": "ranking", "type": "ordinal", "title":"Rank"},
+        {"field": "continent", "type": "nominal"},
+        {"field": "no_company1", "type": "quantitative","title":"Number of startups"}
+
+    ]
+  }
+    },
+    {
+      "width":500,
+      "height":250,
+      "transform": [
+      {"filter":"datum.continent != 0"},
+      {"filter":"datum.Year != 0"},
+      {"field": "datum.no_corps == 'Startups'"},
+      {"aggregate": [
+        {
+          "op": "sum",
+          "field": "no_company",
+          "as": "no_company1"
+  
+        }],
+        "groupby": ["continent","Year"]
+      }],
+        "mark": "bar",
+        "encoding": {
+          "x": {"aggregate":"sum","field": "no_company1", "type": "quantitative","title":"Number of startups"},
+          "y": {"field": "Year", "type": "temporal","scale":{
+            "domain":{"param": "brush"}}},
+          "color":{"field":"continent"},
+          "tooltip": [
+        {"field": "Year", "type": "temporal"},
+        {"field": "continent", "type": "nominal","title":"Continent"},
+        {"field": "no_company1", "type": "quantitative","title":"Number of startups"}
+
+    ]
+          }}
+        ]}
