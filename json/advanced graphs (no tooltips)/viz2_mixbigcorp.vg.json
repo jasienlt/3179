@@ -68,7 +68,7 @@
                 },
                 "tooltip": [
                   {"field": "Year", "type": "temporal"},
-                  {"field": "rating", "type": "quantitative"},
+                  {"field": "rating", "type": "quantitative","title":"Rating"},
                   {"field": "Country", "type": "nominal"}
                 ]
               },
@@ -77,12 +77,28 @@
                 {
                   "transform": [
                     {
+                      "aggregate": [{
+                        "op": "count",
+                        "as": "Number of corps"
+                      }],
+                      "groupby": ["rating","Year","Country"]
+                    },
+                    {
                       "window": [{"op": "rank", "as": "ranking"}],
                       "sort": [{"field": "rating", "order": "descending"}]
                     },
                     {"filter": "datum.ranking == 1"},
+                    {"window": [{"op": "count", "as": "count"}]},
+                    {"filter": "datum.count <= 1"},
                     {
-                      "calculate": "'The highest rating of; the selected period: ' + datum['rating']",
+                      "lookup": "Country",
+                      "from":{
+                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                        "key": "name",
+                        "fields":["latitude","longitude"]}
+                    },
+                    {
+                      "calculate": "'The highest number of big corps of; the selected period: ' + datum['Number of corps'] + ', with rating: '+datum['rating']",
                       "as": "text_annotation_raw"
                     },
                     {
@@ -106,6 +122,7 @@
                       }
                     },
                     {
+                      
                       "mark": {
                         "type": "text",
                         "align": "right",

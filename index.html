@@ -103,7 +103,7 @@
                 },
                 "tooltip": [
                   {"field": "Year", "type": "temporal"},
-                  {"field": "rating", "type": "quantitative"},
+                  {"field": "rating", "type": "quantitative","title":"Rating"},
                   {"field": "Country", "type": "nominal"}
                 ]
               },
@@ -112,12 +112,28 @@
                 {
                   "transform": [
                     {
+                      "aggregate": [{
+                        "op": "count",
+                        "as": "Number of corps"
+                      }],
+                      "groupby": ["rating","Year","Country"]
+                    },
+                    {
                       "window": [{"op": "rank", "as": "ranking"}],
                       "sort": [{"field": "rating", "order": "descending"}]
                     },
                     {"filter": "datum.ranking == 1"},
+                    {"window": [{"op": "count", "as": "count"}]},
+                    {"filter": "datum.count <= 1"},
                     {
-                      "calculate": "'The highest rating of; the selected period: ' + datum['rating']",
+                      "lookup": "Country",
+                      "from":{
+                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                        "key": "name",
+                        "fields":["latitude","longitude"]}
+                    },
+                    {
+                      "calculate": "'The highest number of big corps of; the selected period: ' + datum['Number of corps'] + ', with rating: '+datum['rating']",
                       "as": "text_annotation_raw"
                     },
                     {
@@ -141,6 +157,7 @@
                       }
                     },
                     {
+                      
                       "mark": {
                         "type": "text",
                         "align": "right",
@@ -214,8 +231,7 @@
     }
   ],
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
-}
-  ;
+};
  vegaEmbed("#vis1", specVis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
                      </script>
@@ -236,7 +252,7 @@
                     <script>
                         const specVis2 ={
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
+  "title": "Relationship between salaries, interviews, jobs, and reviews in big corps.",
   "data": {
     "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/campanydata.csv"
   },
@@ -270,20 +286,47 @@
       "as": "norm_val"
     }
   ],
+  
+
   "layer": [
     {
       "mark": {"type": "rule", "color": "#ccc"},
       "encoding": {"detail": {"aggregate": "count"}, "x": {"field": "key"}}
     },
-    {
+    { "params": [{
+    "name":"continent_highlight",
+    "select":{"type": "point","fields": ["Continent"]},
+    "bind":"legend"
+    
+  }],
       "mark": {"type": "line", "point": true},
       "encoding": {
-        "color": {"type": "nominal", "field": "Continent"},
+        
         "detail": {"type": "nominal", "field": "index"},
-        "opacity": {"value": 0.3},
+        
         "x": {"type": "nominal", "field": "key"},
         "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+        "color": {"type": "nominal", "field": "Continent", "scale":
+        {"domain":[
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania",
+          "South America"
+        ],
+        "range":[
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8",
+          "#a65628"
+        ]}
+        },
+        "opacity": {"condition":{"param":"continent_highlight","value":0.6},"value":0.2},
         "tooltip": [
+          {"type": "nominal", "field": "Continent"},
           {"type": "quantitative", "field": "Number of reviews"},
           {"type": "quantitative", "field": "Number of jobs"},
           {"type": "quantitative", "field": "Number of interviews"},
@@ -624,9 +667,22 @@
     "encoding": {
       "x": {"field": "Year", "type": "temporal"},
       "y": {"field": "ranking", "type": "ordinal","title":"Rank"},
-      "color":{
-        "field":"continent","type":"nominal"
-      },
+      "color": {"type": "nominal", "field": "continent","title":"Continent", "scale":
+        {"domain":[
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania"
+        ],
+        "range":[
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8"
+        ]}
+        },
       "tooltip": [
         {"field": "Year", "type": "temporal"},
         {"field": "ranking", "type": "ordinal", "title":"Rank"},
@@ -679,6 +735,8 @@
             <hr class="hr3">
 
 
+            
+            <hr class="hr3">
             <h2>Chart 5:</h2>
             <!-- pure grid group -->
             <div class="pure-g">
@@ -686,34 +744,6 @@
                     <div id="vis5" class="vis-container">
                         <script>
                             const specVis5 ={
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Stock prices of 5 Tech Companies over Time.",
-    "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/comparison.csv"},
-    "mark": {
-      "type": "line",
-      "point": true
-    },
-    "encoding": {
-      "x": {"timeUnit": "year", "field": "Year"},
-      "y": {"aggregate":"sum", "field": "no_company", "type": "quantitative"},
-      "color": {"field": "no_corps", "type": "nominal"}
-    }
-  };
-     vegaEmbed("#vis5", specVis5, {mode: "vega-lite"}).then(console.log).catch(console.warn);
- 
-                         </script>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="hr3">
-            <h2>Chart 6:</h2>
-            <!-- pure grid group -->
-            <div class="pure-g">
-                <div class="pure-u-1-1">
-                    <div id="vis6" class="vis-container">
-                        <script>
-                            const specVis6 ={
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 550,
@@ -758,7 +788,24 @@
           "axis": {"title": "", "tickCount": 5, "grid": false}
         },
         "y": {"aggregate": "count", "title": "Number of startups"},
-        "color": {"field": "Continent", "type": "nominal"},
+        "color": {"type": "nominal", "field": "Continent", "scale":
+        {"domain":[
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania",
+          "South America"
+        ],
+        "range":[
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8",
+          "#a65628"
+        ]}
+        },
         "tooltip": [
           {"field": "Year", "type": "temporal", "title": "Year"},
           {"field": "Continent", "type": "nominal", "title": "Continent"},
@@ -772,7 +819,7 @@
     },
     {
       "width": 500,
-      "height": 350,
+      "height": 250,
       "title": "Number of startups with different industries",
       "transform": [
         {
@@ -797,7 +844,7 @@
           "scale": {"domain": {"param": "time_brush"}},
           "axis": {"title": "", "tickCount": 5, "grid": false}
         },
-        "y": {"field": "Industry", "type": "nominal", "title": "Industry"},
+        "y": {"field": "Continent", "type": "nominal", "title": "Continent"},
         "color": {
           "field": "Industry",
           "scale": {
@@ -812,7 +859,7 @@
             "domain": [10, 20, 30, 50, 150],
             "range": [10, 50, 150, 200, 300, 400]
           },
-          "legend":{"offset": -100}
+          "legend": false
         },
         "opacity": {
           "condition": {"selection": "number_highlight", "value": 1},
@@ -835,6 +882,7 @@
       "height": 150,
       "mark": "line",
       "title": "Use this line chart to filter out the data based on time",
+      
       "params": [
         {
           "name": "time_brush",
@@ -859,7 +907,7 @@
   "resolve": {"scale": {"color": "independent"}},
   "config": {"title": {"font": "sans-serif", "fontSize": 14}}
 };
-     vegaEmbed("#vis6", specVis6, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+     vegaEmbed("#vis5", specVis5, {mode: "vega-lite"}).then(console.log).catch(console.warn);
  
                          </script>
                     </div>

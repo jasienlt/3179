@@ -57,7 +57,7 @@
     },
     {
       "width": 500,
-      "height": 350,
+      "height": 250,
       "title": "Number of startups with different industries",
       "transform": [
         {
@@ -82,7 +82,7 @@
           "scale": {"domain": {"param": "time_brush"}},
           "axis": {"title": "", "tickCount": 5, "grid": false}
         },
-        "y": {"field": "Industry", "type": "nominal", "title": "Industry"},
+        "y": {"field": "Continent", "type": "nominal", "title": "Continent"},
         "color": {
           "field": "Industry",
           "scale": {
@@ -97,7 +97,7 @@
             "domain": [10, 20, 30, 50, 150],
             "range": [10, 50, 150, 200, 300, 400]
           },
-          "legend":{"offset": -100}
+          "legend": false
         },
         "opacity": {
           "condition": {"selection": "number_highlight", "value": 1},
@@ -120,6 +120,7 @@
       "height": 150,
       "mark": "line",
       "title": "Use this line chart to filter out the data based on time",
+      
       "params": [
         {
           "name": "time_brush",
