@@ -225,17 +225,141 @@
         <!-- end pure grid group -->
         <br>
 
+        <hr class="hr3">
+
+
+        <h2>Chart 2: </h2>
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis2" class="vis-container">
+                    <script>
+                        const specVis2 ={
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
+"data": {
+  "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/campanydata.csv"
+},
+"width": 600,
+"height": 300,
+"transform": [
+  {"filter": "datum['Number of interviews']"},
+  {"window": [{"op": "count", "as": "index"}]},
+  {"fold": ["Number of interviews", "Number of jobs", "Amount of salaries", "Number of reviews"]},
+  {
+    "joinaggregate": [
+      {"op": "min", "field": "value", "as": "min"},
+      {"op": "max", "field": "value", "as": "max"}
+    ],
+    "groupby": ["key"]
+  },
+  {
+    "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
+    "as": "norm_val"
+  },
+  {
+    "calculate": "(datum.min + datum.max) / 2",
+    "as": "mid"
+  }
+],
+"layer": [{
+  "mark": {"type": "rule", "color": "#ccc"},
+  "encoding": {
+    "detail": {"aggregate": "count"},
+    "x": {"field": "key"}
+  }
+}, {
+  "mark": {"type":"line","point":true},
+  "encoding": {
+    "color": {"type": "nominal", "field": "Continent"},
+    "detail": {"type": "nominal", "field": "index"},
+    "opacity": {"value": 0.3},
+    "x": {"type": "nominal", "field": "key"},
+    "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+    "tooltip": [{
+      "type": "quantitative",
+      "field": "Number of reviews"
+    }, {
+      "type": "quantitative",
+      "field": "Number of jobs"
+    }, {
+      "type": "quantitative",
+      "field": "Number of interviews"
+    }, {
+      "type": "quantitative",
+      "field": "Amount of salaries"
+    }]
+  }
+}, {
+  "encoding": {
+    "x": {"type": "nominal", "field": "key"},
+    "y": {"value": 0}
+  },
+  "layer": [{
+    "mark": {"type": "text", "style": "label"},
+    "encoding": {
+      "text": {"aggregate": "max", "field": "max"}
+    }
+  }, {
+    "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+  }]
+}, {
+  "encoding": {
+    "x": {"type": "nominal", "field": "key"},
+    "y": {"value": 150}
+  },
+  "layer": [{
+    "mark": {"type": "text", "style": "label"},
+    "encoding": {
+      "text": {"aggregate": "min", "field": "mid"}
+    }
+  }, {
+    "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+  }]
+}, {
+  "encoding": {
+    "x": {"type": "nominal", "field": "key"},
+    "y": {"value": 300}
+  },
+  "layer": [{
+    "mark": {"type": "text", "style": "label"},
+    "encoding": {
+      "text": {"aggregate": "min", "field": "min"}
+    }
+  }, {
+    "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+  }]
+}],
+"config": {
+  "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
+  "view": {"stroke": null},
+  "style": {
+    "label": {"baseline": "middle", "align": "right", "dx": -5},
+    "tick": {"orient": "horizontal"}
+  }
+}
+}
+;
+ vegaEmbed("#vis2", specVis2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+                     </script>
+                </div>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+        <br>
+
 
 
             <hr class="hr3">
 
-            <h2>Chart 2:</h2>
+            <h2>Chart 3:</h2>
             <!-- pure grid group -->
             <div class="pure-g">
                 <div class="pure-u-1-1">
-                    <div id="vis2" class="vis-container">
+                    <div id="vis3" class="vis-container">
                         <script>
-                           const specVis2 ={
+                           const specVis3 ={
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startup_v2.csv"
@@ -440,7 +564,7 @@
   ],
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 };
-    vegaEmbed("#vis2", specVis2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
                         </script>
                     </div>
@@ -449,129 +573,7 @@
             <!-- end pure grid group -->
             <br>
 
-            <hr class="hr3">
 
-
-            <h2>Chart 3: </h2>
-            <!-- pure grid group -->
-            <div class="pure-g">
-                <div class="pure-u-1-1">
-                    <div id="vis3" class="vis-container">
-                        <script>
-                            const specVis3 ={
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
-    "data": {
-      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/campanydata.csv"
-    },
-    "width": 600,
-    "height": 300,
-    "transform": [
-      {"filter": "datum['Number of interviews']"},
-      {"window": [{"op": "count", "as": "index"}]},
-      {"fold": ["Number of interviews", "Number of jobs", "Amount of salaries", "Number of reviews"]},
-      {
-        "joinaggregate": [
-          {"op": "min", "field": "value", "as": "min"},
-          {"op": "max", "field": "value", "as": "max"}
-        ],
-        "groupby": ["key"]
-      },
-      {
-        "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
-        "as": "norm_val"
-      },
-      {
-        "calculate": "(datum.min + datum.max) / 2",
-        "as": "mid"
-      }
-    ],
-    "layer": [{
-      "mark": {"type": "rule", "color": "#ccc"},
-      "encoding": {
-        "detail": {"aggregate": "count"},
-        "x": {"field": "key"}
-      }
-    }, {
-      "mark": {"type":"line","point":true},
-      "encoding": {
-        "color": {"type": "nominal", "field": "Continent"},
-        "detail": {"type": "nominal", "field": "index"},
-        "opacity": {"value": 0.3},
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"type": "quantitative", "field": "norm_val", "axis": null},
-        "tooltip": [{
-          "type": "quantitative",
-          "field": "Number of reviews"
-        }, {
-          "type": "quantitative",
-          "field": "Number of jobs"
-        }, {
-          "type": "quantitative",
-          "field": "Number of interviews"
-        }, {
-          "type": "quantitative",
-          "field": "Amount of salaries"
-        }]
-      }
-    }, {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 0}
-      },
-      "layer": [{
-        "mark": {"type": "text", "style": "label"},
-        "encoding": {
-          "text": {"aggregate": "max", "field": "max"}
-        }
-      }, {
-        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-      }]
-    }, {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 150}
-      },
-      "layer": [{
-        "mark": {"type": "text", "style": "label"},
-        "encoding": {
-          "text": {"aggregate": "min", "field": "mid"}
-        }
-      }, {
-        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-      }]
-    }, {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 300}
-      },
-      "layer": [{
-        "mark": {"type": "text", "style": "label"},
-        "encoding": {
-          "text": {"aggregate": "min", "field": "min"}
-        }
-      }, {
-        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-      }]
-    }],
-    "config": {
-      "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
-      "view": {"stroke": null},
-      "style": {
-        "label": {"baseline": "middle", "align": "right", "dx": -5},
-        "tick": {"orient": "horizontal"}
-      }
-    }
-  }
-  ;
-     vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
- 
-                         </script>
-                    </div>
-                </div>
-            </div>
-            <!-- end pure grid group -->
-            <br>
 
             <hr class="hr3">
 
