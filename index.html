@@ -34,110 +34,187 @@
                 <div id="vis1" class="vis-container">
                     <script>
                         const specVis1 ={
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
-    "data": {
-      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/campanydata.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/company_v2.csv"
+  },
+  "title": "Big corps in 2022",
+
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "width": 600,
+          "height": 300,
+          "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
+          "layer": [
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/ne_110m(1).json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "ne_110m_admin_0_countries"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "fill": "lightgray",
+                "stroke": "white"
+              }
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/oceans.json",
+                "format": {"type": "topojson", "feature": "oceans"}
+              },
+              "mark": {"type": "geoshape", "fill": "lightskyblue"}
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/ne_110m(1).json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "ne_110m_graticules_30"
+                }
+              },
+              "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+            },
+            {
+              "transform": [{"filter": {"param": "time_brush"}}],
+              "encoding": {
+                "longitude": {"field": "longitude", "type": "quantitative"},
+                "latitude": {"field": "latitude", "type": "quantitative"},
+                "color": {
+                  "field": "rating",
+                  "type": "quantitative",
+                  "title": "Rating",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [1, 2, 3, 4,5],
+                    "range": [
+                      "#fdbe85",
+                      "#fd8d3c",
+                      "#e6550d",
+                      "#bd0026",
+                      "#7f0000",
+                      "black"
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {"field": "Year", "type": "temporal"},
+                  {"field": "rating", "type": "quantitative"},
+                  {"field": "Country", "type": "nominal"}
+                ]
+              },
+              "layer": [
+                {"mark": {"type": "circle", "opacity": 0.4, "size": 15}},
+                {
+                  "transform": [
+                    {
+                      "window": [{"op": "rank", "as": "ranking"}],
+                      "sort": [{"field": "rating", "order": "descending"}]
+                    },
+                    {"filter": "datum.ranking == 1"},
+                    {
+                      "calculate": "'The highest rating of; the selected period: ' + datum['rating']",
+                      "as": "text_annotation_raw"
+                    },
+                    {
+                      "calculate": "split(datum.text_annotation_raw, ';')",
+                      "as": "text_annotation"
+                    }
+                  ],
+                  "layer": [
+                    {
+                      "mark": {
+                        "type": "point",
+                        "size": 200,
+                        "shape": "M0,.5L.6,.8L.5,.1L1,-.3L.3,-.4L0,-1L-.3,-.4L-1,-.3L-.5,.1L-.6,.8L0,.5Z"
+                      },
+                      "encoding": {
+                        "color": {
+                          "field": "rating",
+                          "type": "quantitative",
+                          "legend": null
+                        }
+                      }
+                    },
+                    {
+                      "mark": {
+                        "type": "text",
+                        "align": "right",
+                        "dx": -8,
+                        "dy": -8,
+                        "baseline": "middle",
+                        "fontStyle": "italic"
+                      },
+                      "encoding": {"text": {"field": "text_annotation"}}
+                    }
+                  ]
+                }
+              ],
+              "resolve": {"scale": {"color": "independent"}}
+            }
+          ]
+        },
+        {
+          "width": 475,
+          "height": 280,
+          "transform": [
+            {
+              "bin": {"step": 1, "extent": [1, 5]},
+              "field": "rating",
+              "as": "Rating"
+            }
+          ],
+          "mark": "area",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "timeUnit": "year",
+              "scale": {"domain": {"param": "time_brush"}},
+              "axis": {"title": "", "tickCount": 5, "grid": false}
+            },
+            "y": {"aggregate": "count", "title": "Number of startups", "stack":"center"},
+            "color": {
+              "field": "Rating",
+              "scale": {
+                "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000","black"]
+              },
+              "legend": null
+            }
+          }
+        }
+      ]
     },
-    "width": 600,
-    "height": 300,
-    "transform": [
-      {"filter": "datum['Number of interviews']"},
-      {"window": [{"op": "count", "as": "index"}]},
-      {"fold": ["Number of interviews", "Number of jobs", "Amount of salaries", "Number of reviews"]},
-      {
-        "joinaggregate": [
-          {"op": "min", "field": "value", "as": "min"},
-          {"op": "max", "field": "value", "as": "max"}
-        ],
-        "groupby": ["key"]
-      },
-      {
-        "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
-        "as": "norm_val"
-      },
-      {
-        "calculate": "(datum.min + datum.max) / 2",
-        "as": "mid"
-      }
-    ],
-    "layer": [{
-      "mark": {"type": "rule", "color": "#ccc"},
-      "encoding": {
-        "detail": {"aggregate": "count"},
-        "x": {"field": "key"}
-      }
-    }, {
-      "mark": {"type":"line","point":true},
-      "encoding": {
-        "color": {"type": "nominal", "field": "Continent"},
-        "detail": {"type": "nominal", "field": "index"},
-        "opacity": {"value": 0.3},
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"type": "quantitative", "field": "norm_val", "axis": null},
-        "tooltip": [{
-          "type": "quantitative",
-          "field": "Number of reviews"
-        }, {
-          "type": "quantitative",
-          "field": "Number of jobs"
-        }, {
-          "type": "quantitative",
-          "field": "Number of interviews"
-        }, {
-          "type": "quantitative",
-          "field": "Amount of salaries"
-        }]
-      }
-    }, {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 0}
-      },
-      "layer": [{
-        "mark": {"type": "text", "style": "label"},
-        "encoding": {
-          "text": {"aggregate": "max", "field": "max"}
+    {
+      "width": 1200,
+      "height": 60,
+      "mark": {"type": "line", "color": "#fdbe85"},
+      "title": "Use this line chart to filter out the data based on time",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
         }
-      }, {
-        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-      }]
-    }, {
+      ],
       "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 150}
-      },
-      "layer": [{
-        "mark": {"type": "text", "style": "label"},
-        "encoding": {
-          "text": {"aggregate": "min", "field": "mid"}
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "axis": {"title": "", "format": "%Y"}
+        },
+        "y": {
+          "aggregate": "count",
+          "axis": {"tickCount": 3, "grid": false},
+          "title": "Count"
         }
-      }, {
-        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-      }]
-    }, {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 300}
-      },
-      "layer": [{
-        "mark": {"type": "text", "style": "label"},
-        "encoding": {
-          "text": {"aggregate": "min", "field": "min"}
-        }
-      }, {
-        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-      }]
-    }],
-    "config": {
-      "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
-      "view": {"stroke": null},
-      "style": {
-        "label": {"baseline": "middle", "align": "right", "dx": -5},
-        "tick": {"orient": "horizontal"}
       }
     }
-  }
+  ],
+  "config": {"title": {"font": "sans-serif", "fontSize": 16}}
+}
   ;
  vegaEmbed("#vis1", specVis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
