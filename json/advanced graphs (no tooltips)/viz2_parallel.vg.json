@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
+  "title": "Relationship between salaries, interviews, jobs, and reviews in big corps.",
   "data": {
     "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/campanydata.csv"
   },
@@ -34,20 +34,47 @@
       "as": "norm_val"
     }
   ],
+  
+
   "layer": [
     {
       "mark": {"type": "rule", "color": "#ccc"},
       "encoding": {"detail": {"aggregate": "count"}, "x": {"field": "key"}}
     },
-    {
+    { "params": [{
+    "name":"continent_highlight",
+    "select":{"type": "point","fields": ["Continent"]},
+    "bind":"legend"
+    
+  }],
       "mark": {"type": "line", "point": true},
       "encoding": {
-        "color": {"type": "nominal", "field": "Continent"},
+        
         "detail": {"type": "nominal", "field": "index"},
-        "opacity": {"value": 0.3},
+        
         "x": {"type": "nominal", "field": "key"},
         "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+        "color": {"type": "nominal", "field": "Continent", "scale":
+        {"domain":[
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania",
+          "South America"
+        ],
+        "range":[
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8",
+          "#a65628"
+        ]}
+        },
+        "opacity": {"condition":{"param":"continent_highlight","value":0.6},"value":0.2},
         "tooltip": [
+          {"type": "nominal", "field": "Continent"},
           {"type": "quantitative", "field": "Number of reviews"},
           {"type": "quantitative", "field": "Number of jobs"},
           {"type": "quantitative", "field": "Number of interviews"},

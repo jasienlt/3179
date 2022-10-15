@@ -36,9 +36,22 @@
     "encoding": {
       "x": {"field": "Year", "type": "temporal"},
       "y": {"field": "ranking", "type": "ordinal","title":"Rank"},
-      "color":{
-        "field":"continent","type":"nominal"
-      },
+      "color": {"type": "nominal", "field": "continent","title":"Continent", "scale":
+        {"domain":[
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania"
+        ],
+        "range":[
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8"
+        ]}
+        },
       "tooltip": [
         {"field": "Year", "type": "temporal"},
         {"field": "ranking", "type": "ordinal", "title":"Rank"},

@@ -43,7 +43,24 @@
           "axis": {"title": "", "tickCount": 5, "grid": false}
         },
         "y": {"aggregate": "count", "title": "Number of startups"},
-        "color": {"field": "Continent", "type": "nominal"},
+        "color": {"type": "nominal", "field": "Continent", "scale":
+        {"domain":[
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania",
+          "South America"
+        ],
+        "range":[
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8",
+          "#a65628"
+        ]}
+        },
         "tooltip": [
           {"field": "Year", "type": "temporal", "title": "Year"},
           {"field": "Continent", "type": "nominal", "title": "Continent"},
