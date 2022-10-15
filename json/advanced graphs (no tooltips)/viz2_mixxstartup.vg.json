@@ -32,7 +32,7 @@
   "vconcat": [
     {
       "width": 500,
-      "height": 250,
+      "height": 150,
       "mark": "line",
       "title": "Number of startups within different continents",
       "encoding": {
@@ -57,7 +57,7 @@
     },
     {
       "width": 500,
-      "height": 500,
+      "height": 350,
       "title": "Number of startups with different industries",
       "transform": [
         {

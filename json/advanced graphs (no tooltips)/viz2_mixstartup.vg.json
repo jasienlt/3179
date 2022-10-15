@@ -11,6 +11,7 @@
         {
           "width": 600,
           "height": 300,
+          "title": "Startups around the globe (Sep 2022)",
           "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
           "layer": [
             {
@@ -75,6 +76,7 @@
                 {"mark": {"type": "circle", "opacity": 0.4, "size": 15}},
                 {
                   "transform": [
+                    
                     {
                       "aggregate": [{
                         "op": "count",
@@ -89,7 +91,15 @@
                     },
                     {"filter": "datum.ranking == 1"},
                     {
-                      "calculate": "'The highest number of startups of; the selected period: ' + datum['Number of startups'] + ' with number of investors: '+datum['Number of investors']",
+                      "lookup": "Country",
+                      "from":{
+                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                        "key": "name",
+                        "fields":["latitude","longitude"]}
+                    },
+                    
+                    {
+                      "calculate": "'The highest number of startups of; the selected period: ' + datum['Number of startups'] + ', with number of investors: '+datum['Number of investors']",
                       "as": "text_annotation_raw"
                     },
                     {
@@ -133,6 +143,7 @@
         {
           "width": 475,
           "height": 280,
+          "title":"Number of startups backed up with number of investors",
           "transform": [
             {
               "bin": {"step": 1, "extent": [1, 4]},

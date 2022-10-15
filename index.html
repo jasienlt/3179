@@ -34,9 +34,134 @@
                 <div id="vis1" class="vis-container">
                     <script>
                         const specVis1 ={
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/campanydata.csv"
+    },
+    "width": 600,
+    "height": 300,
+    "transform": [
+      {"filter": "datum['Number of interviews']"},
+      {"window": [{"op": "count", "as": "index"}]},
+      {"fold": ["Number of interviews", "Number of jobs", "Amount of salaries", "Number of reviews"]},
+      {
+        "joinaggregate": [
+          {"op": "min", "field": "value", "as": "min"},
+          {"op": "max", "field": "value", "as": "max"}
+        ],
+        "groupby": ["key"]
+      },
+      {
+        "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
+        "as": "norm_val"
+      },
+      {
+        "calculate": "(datum.min + datum.max) / 2",
+        "as": "mid"
+      }
+    ],
+    "layer": [{
+      "mark": {"type": "rule", "color": "#ccc"},
+      "encoding": {
+        "detail": {"aggregate": "count"},
+        "x": {"field": "key"}
+      }
+    }, {
+      "mark": {"type":"line","point":true},
+      "encoding": {
+        "color": {"type": "nominal", "field": "Continent"},
+        "detail": {"type": "nominal", "field": "index"},
+        "opacity": {"value": 0.3},
+        "x": {"type": "nominal", "field": "key"},
+        "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+        "tooltip": [{
+          "type": "quantitative",
+          "field": "Number of reviews"
+        }, {
+          "type": "quantitative",
+          "field": "Number of jobs"
+        }, {
+          "type": "quantitative",
+          "field": "Number of interviews"
+        }, {
+          "type": "quantitative",
+          "field": "Amount of salaries"
+        }]
+      }
+    }, {
+      "encoding": {
+        "x": {"type": "nominal", "field": "key"},
+        "y": {"value": 0}
+      },
+      "layer": [{
+        "mark": {"type": "text", "style": "label"},
+        "encoding": {
+          "text": {"aggregate": "max", "field": "max"}
+        }
+      }, {
+        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+      }]
+    }, {
+      "encoding": {
+        "x": {"type": "nominal", "field": "key"},
+        "y": {"value": 150}
+      },
+      "layer": [{
+        "mark": {"type": "text", "style": "label"},
+        "encoding": {
+          "text": {"aggregate": "min", "field": "mid"}
+        }
+      }, {
+        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+      }]
+    }, {
+      "encoding": {
+        "x": {"type": "nominal", "field": "key"},
+        "y": {"value": 300}
+      },
+      "layer": [{
+        "mark": {"type": "text", "style": "label"},
+        "encoding": {
+          "text": {"aggregate": "min", "field": "min"}
+        }
+      }, {
+        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+      }]
+    }],
+    "config": {
+      "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
+      "view": {"stroke": null},
+      "style": {
+        "label": {"baseline": "middle", "align": "right", "dx": -5},
+        "tick": {"orient": "horizontal"}
+      }
+    }
+  }
+  ;
+ vegaEmbed("#vis1", specVis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+                     </script>
+                </div>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+        <br>
+
+
+
+            <hr class="hr3">
+
+            <h2>Chart 2:</h2>
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <div id="vis2" class="vis-container">
+                        <script>
+                           const specVis2 ={
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/company_v2.csv"
+    "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startup_v2.csv"
   },
   "title": "Startups in 2022",
 
@@ -46,6 +171,7 @@
         {
           "width": 600,
           "height": 300,
+          "title": "Startups around the globe (Sep 2022)",
           "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
           "layer": [
             {
@@ -85,39 +211,55 @@
                 "longitude": {"field": "longitude", "type": "quantitative"},
                 "latitude": {"field": "latitude", "type": "quantitative"},
                 "color": {
-                  "field": "rating",
+                  "field": "Number of investors",
                   "type": "quantitative",
-                  "title": "Rating",
+                  "title": "Number of investors",
                   "scale": {
                     "type": "threshold",
-                    "domain": [1, 2, 3, 4,5],
+                    "domain": [1, 2, 3, 4],
                     "range": [
                       "#fdbe85",
                       "#fd8d3c",
                       "#e6550d",
                       "#bd0026",
-                      "#7f0000",
-                      "black"
+                      "#7f0000"
                     ]
                   }
                 },
                 "tooltip": [
                   {"field": "Year", "type": "temporal"},
-                  {"field": "rating", "type": "quantitative"},
-                  {"field": "Country", "type": "nominal"}
+                  {"field": "Country", "type": "nominal"},
+                  {"field": "Number of investors", "type": "quantitative"}
                 ]
               },
               "layer": [
                 {"mark": {"type": "circle", "opacity": 0.4, "size": 15}},
                 {
                   "transform": [
+                    
+                    {
+                      "aggregate": [{
+                        "op": "count",
+                        "as": "Number of startups"
+                      }],
+                      "groupby": ["Number of investors","Year","Country"]
+                    },
+                    
                     {
                       "window": [{"op": "rank", "as": "ranking"}],
-                      "sort": [{"field": "rating", "order": "descending"}]
+                      "sort": [{"field": "Number of startups", "order": "descending"}]
                     },
                     {"filter": "datum.ranking == 1"},
                     {
-                      "calculate": "'The highest rating of; the selected period: ' + datum['rating']",
+                      "lookup": "Country",
+                      "from":{
+                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                        "key": "name",
+                        "fields":["latitude","longitude"]}
+                    },
+                    
+                    {
+                      "calculate": "'The highest number of startups of; the selected period: ' + datum['Number of startups'] + ', with number of investors: '+datum['Number of investors']",
                       "as": "text_annotation_raw"
                     },
                     {
@@ -134,7 +276,7 @@
                       },
                       "encoding": {
                         "color": {
-                          "field": "rating",
+                          "field": "Number of investors",
                           "type": "quantitative",
                           "legend": null
                         }
@@ -161,14 +303,15 @@
         {
           "width": 475,
           "height": 280,
+          "title":"Number of startups backed up with number of investors",
           "transform": [
             {
-              "bin": {"step": 1, "extent": [1, 5]},
-              "field": "rating",
-              "as": "Rating"
+              "bin": {"step": 1, "extent": [1, 4]},
+              "field": "Number of investors",
+              "as": "Number of investors"
             }
           ],
-          "mark": "area",
+          "mark": {"type":"area","point":true},
           "encoding": {
             "x": {
               "field": "Year",
@@ -176,16 +319,21 @@
               "scale": {"domain": {"param": "time_brush"}},
               "axis": {"title": "", "tickCount": 5, "grid": false}
             },
-            "y": {"aggregate": "count", "title": "Number of startups", "stack":"center"},
+            "y": {"aggregate": "count", "title": "Number of startups"},
             "color": {
-              "field": "Rating",
+              "field": "Number of investors",
               "scale": {
-                "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000","black"]
-              },
-              "legend": null
+                "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
+              }},
+          "tooltip": [
+                  {"field": "Year", "type": "temporal"},
+                  {"field": "Number of investors", "type": "quantitative"},
+                  {"field": "__count", "type": "quantitative","title":"Number of startups"}
+
+                ]
             }
           }
-        }
+        
       ]
     },
     {
@@ -215,206 +363,6 @@
   ],
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 };
- vegaEmbed("#vis1", specVis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-
-                     </script>
-                </div>
-            </div>
-        </div>
-        <!-- end pure grid group -->
-        <br>
-
-
-
-            <hr class="hr3">
-
-            <h2>Chart 2:</h2>
-            <!-- pure grid group -->
-            <div class="pure-g">
-                <div class="pure-u-1-1">
-                    <div id="vis2" class="vis-container">
-                        <script>
-                           const specVis2 ={
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startup_v2.csv"
-    },
-    "title": "Startups in 2022",
-  
-    "vconcat": [
-      {
-        "hconcat": [
-          {
-            "width": 600,
-            "height": 300,
-            "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
-            "layer": [
-              {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/ne_110m(1).json",
-                  "format": {
-                    "type": "topojson",
-                    "feature": "ne_110m_admin_0_countries"
-                  }
-                },
-                "mark": {
-                  "type": "geoshape",
-                  "fill": "lightgray",
-                  "stroke": "white"
-                }
-              },
-              {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/oceans.json",
-                  "format": {"type": "topojson", "feature": "oceans"}
-                },
-                "mark": {"type": "geoshape", "fill": "lightskyblue"}
-              },
-              {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/jasienlt/3179/main/json/ne_110m(1).json",
-                  "format": {
-                    "type": "topojson",
-                    "feature": "ne_110m_graticules_30"
-                  }
-                },
-                "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
-              },
-              {
-                "transform": [{"filter": {"param": "time_brush"}}],
-                "encoding": {
-                  "longitude": {"field": "longitude", "type": "quantitative"},
-                  "latitude": {"field": "latitude", "type": "quantitative"},
-                  "color": {
-                    "field": "Number of investors",
-                    "type": "quantitative",
-                    "title": "Number of investors",
-                    "scale": {
-                      "type": "threshold",
-                      "domain": [1, 2, 3, 4],
-                      "range": [
-                        "#fdbe85",
-                        "#fd8d3c",
-                        "#e6550d",
-                        "#bd0026",
-                        "#7f0000"
-                      ]
-                    }
-                  },
-                  "tooltip": [
-                    {"field": "Year", "type": "temporal"},
-                    {"field": "Number of investors", "type": "quantitative"},
-                    {"field": "Country", "type": "nominal"}
-                  ]
-                },
-                "layer": [
-                  {"mark": {"type": "circle", "opacity": 0.4, "size": 15}},
-                  {
-                    "transform": [
-                      {
-                        "window": [{"op": "rank", "as": "ranking"}],
-                        "sort": [{"field": "Number of investors", "order": "descending"}]
-                      },
-                      {"filter": "datum.ranking == 1"},
-                      {
-                        "calculate": "'The highest number of investors of; the selected period: ' + datum['Number of investors']",
-                        "as": "text_annotation_raw"
-                      },
-                      {
-                        "calculate": "split(datum.text_annotation_raw, ';')",
-                        "as": "text_annotation"
-                      }
-                    ],
-                    "layer": [
-                      {
-                        "mark": {
-                          "type": "point",
-                          "size": 200,
-                          "shape": "M0,.5L.6,.8L.5,.1L1,-.3L.3,-.4L0,-1L-.3,-.4L-1,-.3L-.5,.1L-.6,.8L0,.5Z"
-                        },
-                        "encoding": {
-                          "color": {
-                            "field": "Number of investors",
-                            "type": "quantitative",
-                            "legend": null
-                          }
-                        }
-                      },
-                      {
-                        "mark": {
-                          "type": "text",
-                          "align": "right",
-                          "dx": -8,
-                          "dy": -8,
-                          "baseline": "middle",
-                          "fontStyle": "italic"
-                        },
-                        "encoding": {"text": {"field": "text_annotation"}}
-                      }
-                    ]
-                  }
-                ],
-                "resolve": {"scale": {"color": "independent"}}
-              }
-            ]
-          },
-          {
-            "width": 475,
-            "height": 280,
-            "transform": [
-              {
-                "bin": {"step": 1, "extent": [1, 4]},
-                "field": "Number of investors",
-                "as": "Number of investors"
-              }
-            ],
-            "mark": "area",
-            "encoding": {
-              "x": {
-                "field": "Year",
-                "timeUnit": "year",
-                "scale": {"domain": {"param": "time_brush"}},
-                "axis": {"title": "", "tickCount": 5, "grid": false}
-              },
-              "y": {"aggregate": "count", "title": "Number of startups"},
-              "color": {
-                "field": "Number of investors",
-                "scale": {
-                  "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
-                },
-                "legend": null
-              }
-            }
-          }
-        ]
-      },
-      {
-        "width": 1200,
-        "height": 60,
-        "mark": {"type": "line", "color": "#fdbe85"},
-        "title": "Use this line chart to filter out the data based on time",
-        "params": [
-          {
-            "name": "time_brush",
-            "select": {"type": "interval", "encodings": ["x"]}
-          }
-        ],
-        "encoding": {
-          "x": {
-            "field": "Year",
-            "timeUnit": "year",
-            "axis": {"title": "", "format": "%Y"}
-          },
-          "y": {
-            "aggregate": "count",
-            "axis": {"tickCount": 3, "grid": false},
-            "title": "Count"
-          }
-        }
-      }
-    ],
-    "config": {"title": {"font": "sans-serif", "fontSize": 16}}
-  };
     vegaEmbed("#vis2", specVis2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
                         </script>
@@ -567,6 +515,7 @@
     {
     "width":500,
     "height":250,
+    "title": "Please use the graph to indicate time period you want to further explore.",
     "transform": [
       {"filter":"datum.continent != 0"},
       {"filter":"datum.Year != 0"},
@@ -608,6 +557,7 @@
     {
       "width":500,
       "height":250,
+      "title": "Number of startups around continents",
       "transform": [
       {"filter":"datum.continent != 0"},
       {"filter":"datum.Year != 0"},
@@ -682,154 +632,151 @@
                     <div id="vis6" class="vis-container">
                         <script>
                             const specVis6 ={
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 550,
-    "data": {
-      "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startups.csv"
-    },
-    
-    "params": [
-      {
-        "name":"Continent_selection",
-        "bind":{
-          "input": "select",
-          "options": [
-            null,
-            "Africa",
-            "Americas",
-            "Asia",
-            "Europe",
-            "Oceania"
-          ],
-          "labels": [
-            "Show All",
-            "Africa",
-            "Americas",
-            "Asia",
-            "Europe",
-            "Oceania"
-          ],
-          "name": "Continent Selection: "
-        }
-      }
-    ],
-    "transform": [
-      {"filter": "datum.Continent != 0"},
-      {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
-      
-    ],
-    "vconcat": [
-        
-        {
-          "width": 500,
-          "height": 250,
-          "mark": "line",
-          "title":"Number of startups within different continents",
-          "encoding": {
-            "x": {
-              "field": "Year",
-              "timeUnit": "year",
-              "scale": {"domain": {"param": "time_brush"}},
-              "axis": {"title": "", "tickCount": 5, "grid": false}
-            },
-            "y": {"aggregate": "count", "title": "Number of startups"},
-            "color": {"field": "Continent", "type": "nominal"},
-            "tooltip": [
-              {"field": "Year", "type": "temporal", "title": "Year"},
-              {"field": "Continent", "type": "nominal", "title": "Continent"},
-              {"field": "__count", "type": "quantitative","title":"Number of startups"}]
-            
-            }
-          },
-        {
-            "width": 500,
-            "height": 500,
-            "title": "Number of startups with different industries",
-            "transform": [
-              {
-                "aggregate":[{
-                  "op":"sum",
-                  "field":"Count",
-                  "as":"Number of companies"
-                }],
-                "groupby": ["Industry","Year","Continent"]
-              }
-            ],
-            "selection": {
-              "number_highlight": {
-              "type": "multi",
-              "fields": ["Industry"],
-              "bind": "legend"
-              }
-              },
-            "mark": "circle",
-            "encoding": {
-              "x": {
-                "field": "Year",
-                "timeUnit": "year",
-                "scale": {"domain": {"param": "time_brush"}},
-                "axis": {"title": "", "tickCount": 5, "grid": false}
-              },
-              "y": {"field": "Industry", "type":"nominal","title": "Industry"},
-              "color": {
-                "field": "Industry",
-                "scale": {
-                  "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
-                },
-              "size": {
-                "field":"Number of companies",
-                "type":"quantitative",
-                "scale": {
-                    "type":"threshold",
-                    "domain":[10,20,30,50,150],
-                    "range": [10,50,150,200,300]
-                }
-              },
-              "opacity": {
-                "condition": {"selection": "number_highlight", "value": 1},
-                "value": 0.2
-                },
-              
-              "tooltip": [
-              {"field": "Year", "type": "temporal", "title": "Year"},
-              {"field": "Continent", "type": "nominal", "title": "Continent"},
-              {"field": "Industry", "type": "nominal", "title": "Industry"},
-              {"field": "Number of companies", "type": "quantitative","title":"Number of startups"}]
-            
-              
-              }
-      }},
-      {
-        "width": 500,
-        "height": 150,
-        "mark": "line",
-        "title": "Use this line chart to filter out the data based on time",
-        "params": [
-          {
-            "name": "time_brush",
-            "select": {"type": "interval", "encodings": ["x"]}
-          }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 550,
+  "data": {
+    "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startups.csv"
+  },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Africa", "Americas", "Asia", "Europe", "Oceania"],
+        "labels": [
+          "Show All",
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania"
         ],
-        "encoding": {
-          "x": {
-            "field": "Year",
-            "type": "temporal",
-            "timeUnit": "year",
-            
-            "axis": {"title": "", "format": "%Y"}
-          },
-          "y": {
-            "aggregate": "count",
-            "axis": {"tickCount": 3, "grid": false},
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Continent != 0"},
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    }
+  ],
+  "vconcat": [
+    {
+      "width": 500,
+      "height": 150,
+      "mark": "line",
+      "title": "Number of startups within different continents",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "scale": {"domain": {"param": "time_brush"}},
+          "axis": {"title": "", "tickCount": 5, "grid": false}
+        },
+        "y": {"aggregate": "count", "title": "Number of startups"},
+        "color": {"field": "Continent", "type": "nominal"},
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "title": "Year"},
+          {"field": "Continent", "type": "nominal", "title": "Continent"},
+          {
+            "field": "__count",
+            "type": "quantitative",
             "title": "Number of startups"
           }
+        ]
+      }
+    },
+    {
+      "width": 500,
+      "height": 350,
+      "title": "Number of startups with different industries",
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "sum", "field": "Count", "as": "Number of companies"}
+          ],
+          "groupby": ["Industry", "Year", "Continent"]
+        }
+      ],
+      "selection": {
+        "number_highlight": {
+          "type": "multi",
+          "fields": ["Industry"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "scale": {"domain": {"param": "time_brush"}},
+          "axis": {"title": "", "tickCount": 5, "grid": false}
+        },
+        "y": {"field": "Industry", "type": "nominal", "title": "Industry"},
+        "color": {
+          "field": "Industry",
+          "scale": {
+            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
+          }
+        },
+        "size": {
+          "field": "Number of companies",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [10, 20, 30, 50, 150],
+            "range": [10, 50, 150, 200, 300, 400]
+          },
+          "legend":{"offset": -100}
+        },
+        "opacity": {
+          "condition": {"selection": "number_highlight", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "title": "Year"},
+          {"field": "Continent", "type": "nominal", "title": "Continent"},
+          {"field": "Industry", "type": "nominal", "title": "Industry"},
+          {
+            "field": "Number of companies",
+            "type": "quantitative",
+            "title": "Number of startups"
+          }
+        ]
+      }
+    },
+    {
+      "width": 500,
+      "height": 150,
+      "mark": "line",
+      "title": "Use this line chart to filter out the data based on time",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "timeUnit": "year",
+          "axis": {"title": "", "format": "%Y"}
+        },
+        "y": {
+          "aggregate": "count",
+          "axis": {"tickCount": 3, "grid": false},
+          "title": "Number of startups"
         }
       }
-    ],
-    "resolve": {"scale": {"color": "independent"}},
-    "config": {"title": {"font": "sans-serif", "fontSize": 14}}
-  };
+    }
+  ],
+  "resolve": {"scale": {"color": "independent"}},
+  "config": {"title": {"font": "sans-serif", "fontSize": 14}}
+};
      vegaEmbed("#vis6", specVis6, {mode: "vega-lite"}).then(console.log).catch(console.warn);
  
                          </script>

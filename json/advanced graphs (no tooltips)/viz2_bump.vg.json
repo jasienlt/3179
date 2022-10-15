@@ -9,6 +9,7 @@
     {
     "width":500,
     "height":250,
+    "title": "Please use the graph to indicate time period you want to further explore.",
     "transform": [
       {"filter":"datum.continent != 0"},
       {"filter":"datum.Year != 0"},
@@ -50,6 +51,7 @@
     {
       "width":500,
       "height":250,
+      "title": "Number of startups around continents",
       "transform": [
       {"filter":"datum.continent != 0"},
       {"filter":"datum.Year != 0"},
