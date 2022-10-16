@@ -637,6 +637,7 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
         with Asia consistently holds first place in quantity. A 
         promising and robusting ecosystem, evident in steep raise 
         in quantity around 2014, and consistently after 2018.
+        <br><br><i>You can select specific continent from dropdown, as well as click and drag time period from the chart below.</i>
      </p><br>
      </div>
      <div class="pure-g">
@@ -644,99 +645,128 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
             <div id="vis4" class="vis-container">
                 <script>
                     const specVis4 ={
-"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-"description": "Bump chart",
-"title": "Ranking in number of startups around continents (Sep 2022)",
-"data": {
-"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/comparison.csv"
-},
-"vconcat":[
-{
-"width":600,
-"height":150,
-"title": "Please use the graph to indicate time period you want to further explore.",
-"transform": [
-{"filter":"datum.continent != 0"},
-{"filter":"datum.Year != 0"},
-{"field": "datum.no_corps == 'Startups'"},
-{"aggregate": [
-{
-  "op": "sum",
-  "field": "no_company",
-  "as": "no_company1"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart",
+  "title": "Ranking in number of startups around continents (Sep 2022)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/comparison.csv"
+  },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Africa", "Americas", "Asia", "Europe", "Oceania"],
+        "labels": [
+          "Show All",
+          "Africa",
+          "Americas",
+          "Asia",
+          "Europe",
+          "Oceania"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+          "filter": "Continent_selection == null || datum.continent == Continent_selection"
+        }
+  ],
+  "vconcat": [
+    {
+      "width": 600,
+      "height": 150,
+      "title": "Please use the graph to indicate time period you want to further explore.",
+      "transform": [
+        {"filter": "datum.continent != 0"},
+        {"filter": "datum.Year != 0"},
+        {"field": "datum.no_corps == 'Startups'"},
+        
+        {
+          "aggregate": [
+            {"op": "sum", "field": "no_company", "as": "no_company1"}
+          ],
+          "groupby": ["continent", "Year"]
+        },
+        {
+          "window": [{"op": "rank", "as": "ranking"}],
+          "sort": [{"field": "no_company1", "order": "descending"}],
+          "groupby": ["Year"]
+        }
+      ],
+      "mark": {"type": "circle", "point": true},
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "ranking", "type": "ordinal", "title": "Rank"},
+        "color": {
+          "type": "nominal",
+          "field": "continent",
+          "title": "Continent",
+          "scale": {
+            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+            "range": ["#e41a1c", "#984ea3", "#ff7f00", "#a6cee3", "#377eb8"]
+          }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal"},
+          {"field": "ranking", "type": "ordinal", "title": "Rank"},
+          {"field": "continent", "type": "nominal", "title": "Continent"},
+          {
+            "field": "no_company1",
+            "type": "quantitative",
+            "title": "Number of startups"
+          }
+        ]
+      }
+    },
+    {
+      "width": 600,
+      "height": 150,
+      "title": "Number of startups around continents",
+      "transform": [
+        {"filter": "datum.continent != 0"},
+        {"filter": "datum.Year != 0"},
+        {"field": "datum.no_corps == 'Startups'"},
 
-}],
-"groupby": ["continent","Year"]
-},
-{
-"window": [{"op": "rank", "as": "ranking"}],
-"sort": [{"field": "no_company1", "order": "descending"}],
-"groupby": ["Year"]
+        {
+          "aggregate": [
+            {"op": "sum", "field": "no_company", "as": "no_company1"}
+          ],
+          "groupby": ["continent", "Year"]
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "aggregate": "sum",
+          "field": "no_company1",
+          "type": "quantitative",
+          "title": "Number of startups"
+        },
+        "y": {
+          "field": "Year",
+          "type": "temporal",
+          "scale": {"domain": {"param": "brush"}}
+        },
+        "color": {"field": "continent"},
+        "tooltip": [
+          {"field": "Year", "type": "temporal"},
+          {"field": "continent", "type": "nominal", "title": "Continent"},
+          {
+            "field": "no_company1",
+            "type": "quantitative",
+            "title": "Number of startups"
+          }
+        ]
+      }
+    }
+  ]
 }
-],
-"mark": {"type": "circle", "point": true},
-"params":[
-{"name":"brush","select":{"type": "interval", "encodings": ["x"]}}
-],
-"encoding": {
-"x": {"field": "Year", "type": "temporal"},
-"y": {"field": "ranking", "type": "ordinal","title":"Rank"},
-"color": {"type": "nominal", "field": "continent","title":"Continent", "scale":
-{"domain":[
-  "Africa",
-  "Americas",
-  "Asia",
-  "Europe",
-  "Oceania"
-],
-"range":[
-  "#e41a1c",
-  "#984ea3",
-  "#ff7f00",
-  "#a6cee3",
-  "#377eb8"
-]}
-},
-"tooltip": [
-{"field": "Year", "type": "temporal"},
-{"field": "ranking", "type": "ordinal", "title":"Rank"},
-{"field": "continent", "type": "nominal","title":"Continent"},
-{"field": "no_company1", "type": "quantitative","title":"Number of startups"}
-
-]
-}
-},
-{
-"width":600,
-"height":150,
-"title": "Number of startups around continents",
-"transform": [
-{"filter":"datum.continent != 0"},
-{"filter":"datum.Year != 0"},
-{"field": "datum.no_corps == 'Startups'"},
-{"aggregate": [
-{
-  "op": "sum",
-  "field": "no_company",
-  "as": "no_company1"
-
-}],
-"groupby": ["continent","Year"]
-}],
-"mark": "bar",
-"encoding": {
-  "x": {"aggregate":"sum","field": "no_company1", "type": "quantitative","title":"Number of startups"},
-  "y": {"field": "Year", "type": "temporal","scale":{
-    "domain":{"param": "brush"}}},
-  "color":{"field":"continent"},
-  "tooltip": [
-{"field": "Year", "type": "temporal"},
-{"field": "continent", "type": "nominal","title":"Continent"},
-{"field": "no_company1", "type": "quantitative","title":"Number of startups"}
-
-]
-  }}
-]}
 ;
 vegaEmbed("#vis4", specVis4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
@@ -756,7 +786,9 @@ vegaEmbed("#vis4", specVis4, {mode: "vega-lite"}).then(console.log).catch(consol
       
       <h1>Growth of startups within different industries</h1>
         <div class="contentText"><br>
-      <p>Considering from industry categorisation, predominant growth lies on high-tech spectrum, including Fintech, Artificial Intelligence, Data management and analytics, etc. This provides great signs of growth-driven environment welcoming more creativity and innovation for disruptive industries.</p><br>
+      <p>Considering from industry categorisation, predominant growth lies on high-tech spectrum, including Fintech, Artificial Intelligence, Data management and analytics, etc. This provides great signs of growth-driven environment welcoming more creativity and innovation for disruptive industries.
+      <br><br>  <i>You can click on specific industry in legend.</i>
+      </p><br>
       </div>
       <div class="pure-g">
         <div class="pure-u-1-1">
