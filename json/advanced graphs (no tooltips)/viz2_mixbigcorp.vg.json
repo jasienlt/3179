@@ -5,9 +5,7 @@
   },
   "title": "Big corps in 2022",
 
-  "vconcat": [
-    {
-      "hconcat": [
+      "vconcat": [
         {
           "width": 600,
           "height": 300,
@@ -55,7 +53,7 @@
                   "title": "Rating",
                   "scale": {
                     "type": "threshold",
-                    "domain": [1, 2, 3, 4,5],
+                    "domain": [1, 2, 3, 4, 5],
                     "range": [
                       "#fdbe85",
                       "#fd8d3c",
@@ -68,7 +66,11 @@
                 },
                 "tooltip": [
                   {"field": "Year", "type": "temporal"},
-                  {"field": "rating", "type": "quantitative","title":"Rating"},
+                  {
+                    "field": "rating",
+                    "type": "quantitative",
+                    "title": "Rating"
+                  },
                   {"field": "Country", "type": "nominal"}
                 ]
               },
@@ -77,11 +79,8 @@
                 {
                   "transform": [
                     {
-                      "aggregate": [{
-                        "op": "count",
-                        "as": "Number of corps"
-                      }],
-                      "groupby": ["rating","Year","Country"]
+                      "aggregate": [{"op": "count", "as": "Number of corps"}],
+                      "groupby": ["rating", "Year", "Country"]
                     },
                     {
                       "window": [{"op": "rank", "as": "ranking"}],
@@ -92,10 +91,13 @@
                     {"filter": "datum.count <= 1"},
                     {
                       "lookup": "Country",
-                      "from":{
-                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                      "from": {
+                        "data": {
+                          "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"
+                        },
                         "key": "name",
-                        "fields":["latitude","longitude"]}
+                        "fields": ["latitude", "longitude"]
+                      }
                     },
                     {
                       "calculate": "'The highest number of big corps of; the selected period: ' + datum['Number of corps'] + ', with rating: '+datum['rating']",
@@ -122,7 +124,6 @@
                       }
                     },
                     {
-                      
                       "mark": {
                         "type": "text",
                         "align": "right",
@@ -141,8 +142,15 @@
           ]
         },
         {
-          "width": 475,
+          "width": 600,
           "height": 280,
+          "title": "Use this line chart to filter out the data based on time",
+          "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
           "transform": [
             {
               "bin": {"step": 1, "extent": [1, 5]},
@@ -155,45 +163,31 @@
             "x": {
               "field": "Year",
               "timeUnit": "year",
-              "scale": {"domain": {"param": "time_brush"}},
               "axis": {"title": "", "tickCount": 5, "grid": false}
             },
-            "y": {"aggregate": "count", "title": "Number of startups", "stack":"center"},
+            "y": {
+              "aggregate": "count",
+              "title": "Number of startups",
+              "stack": "center"
+            },
             "color": {
               "field": "Rating",
               "scale": {
-                "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000","black"]
-              },
-              "legend": null
+                "range": [
+                  "#fdbe85",
+                  "#fd8d3c",
+                  "#e6550d",
+                  "#bd0026",
+                  "#7f0000",
+                  "black"
+                ]
+              }
             }
           }
         }
       ]
-    },
-    {
-      "width": 1200,
-      "height": 60,
-      "mark": {"type": "line", "color": "#fdbe85"},
-      "title": "Use this line chart to filter out the data based on time",
-      "params": [
-        {
-          "name": "time_brush",
-          "select": {"type": "interval", "encodings": ["x"]}
-        }
-      ],
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "timeUnit": "year",
-          "axis": {"title": "", "format": "%Y"}
-        },
-        "y": {
-          "aggregate": "count",
-          "axis": {"tickCount": 3, "grid": false},
-          "title": "Count"
-        }
-      }
-    }
-  ],
+    
+  ,
+  "resolve": {"scale": {"color": "independent"}},
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 }

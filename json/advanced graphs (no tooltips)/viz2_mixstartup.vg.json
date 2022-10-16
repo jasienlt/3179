@@ -4,11 +4,9 @@
     "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startup_v2.csv"
   },
   "title": "Startups in 2022",
-
   "vconcat": [
     {
-      "hconcat": [
-        {
+        
           "width": 600,
           "height": 300,
           "title": "Startups around the globe (Sep 2022)",
@@ -76,28 +74,29 @@
                 {"mark": {"type": "circle", "opacity": 0.4, "size": 15}},
                 {
                   "transform": [
-                    
                     {
-                      "aggregate": [{
-                        "op": "count",
-                        "as": "Number of startups"
-                      }],
-                      "groupby": ["Number of investors","Year","Country"]
+                      "aggregate": [
+                        {"op": "count", "as": "Number of startups"}
+                      ],
+                      "groupby": ["Number of investors", "Year", "Country"]
                     },
-                    
                     {
                       "window": [{"op": "rank", "as": "ranking"}],
-                      "sort": [{"field": "Number of startups", "order": "descending"}]
+                      "sort": [
+                        {"field": "Number of startups", "order": "descending"}
+                      ]
                     },
                     {"filter": "datum.ranking == 1"},
                     {
                       "lookup": "Country",
-                      "from":{
-                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                      "from": {
+                        "data": {
+                          "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"
+                        },
                         "key": "name",
-                        "fields":["latitude","longitude"]}
+                        "fields": ["latitude", "longitude"]
+                      }
                     },
-                    
                     {
                       "calculate": "'The highest number of startups of; the selected period: ' + datum['Number of startups'] + ', with number of investors: '+datum['Number of investors']",
                       "as": "text_annotation_raw"
@@ -139,11 +138,20 @@
               "resolve": {"scale": {"color": "independent"}}
             }
           ]
-        },
-        {
-          "width": 475,
+        
+        
+      
+    },
+    {
+          "width": 600,
           "height": 280,
-          "title":"Number of startups backed up with number of investors",
+          "title": "Use this line chart to filter out the data based on time",
+          "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
           "transform": [
             {
               "bin": {"step": 1, "extent": [1, 4]},
@@ -151,12 +159,11 @@
               "as": "Number of investors"
             }
           ],
-          "mark": {"type":"area","point":true},
+          "mark": {"type": "area", "point": true},
           "encoding": {
             "x": {
               "field": "Year",
               "timeUnit": "year",
-              "scale": {"domain": {"param": "time_brush"}},
               "axis": {"title": "", "tickCount": 5, "grid": false}
             },
             "y": {"aggregate": "count", "title": "Number of startups"},
@@ -164,42 +171,20 @@
               "field": "Number of investors",
               "scale": {
                 "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
-              }},
-          "tooltip": [
-                  {"field": "Year", "type": "temporal"},
-                  {"field": "Number of investors", "type": "quantitative"},
-                  {"field": "__count", "type": "quantitative","title":"Number of startups"}
-
-                ]
-            }
+              }
+            },
+            "tooltip": [
+              {"field": "Year", "type": "temporal"},
+              {"field": "Number of investors", "type": "quantitative"},
+              {
+                "field": "__count",
+                "type": "quantitative",
+                "title": "Number of startups"
+              }
+            ]
           }
-        
-      ]
-    },
-    {
-      "width": 1200,
-      "height": 60,
-      "mark": {"type": "line", "color": "#fdbe85"},
-      "title": "Use this line chart to filter out the data based on time",
-      "params": [
-        {
-          "name": "time_brush",
-          "select": {"type": "interval", "encodings": ["x"]}
         }
-      ],
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "timeUnit": "year",
-          "axis": {"title": "", "format": "%Y"}
-        },
-        "y": {
-          "aggregate": "count",
-          "axis": {"tickCount": 3, "grid": false},
-          "title": "Count"
-        }
-      }
-    }
   ],
+  "resolve": {"scale": {"color": "independent"}},
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 }

@@ -32,48 +32,6 @@
   "vconcat": [
     {
       "width": 500,
-      "height": 150,
-      "mark": "line",
-      "title": "Number of startups within different continents",
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "timeUnit": "year",
-          "scale": {"domain": {"param": "time_brush"}},
-          "axis": {"title": "", "tickCount": 5, "grid": false}
-        },
-        "y": {"aggregate": "count", "title": "Number of startups"},
-        "color": {"type": "nominal", "field": "Continent", "scale":
-        {"domain":[
-          "Africa",
-          "Americas",
-          "Asia",
-          "Europe",
-          "Oceania",
-          "South America"
-        ],
-        "range":[
-          "#e41a1c",
-          "#984ea3",
-          "#ff7f00",
-          "#a6cee3",
-          "#377eb8",
-          "#a65628"
-        ]}
-        },
-        "tooltip": [
-          {"field": "Year", "type": "temporal", "title": "Year"},
-          {"field": "Continent", "type": "nominal", "title": "Continent"},
-          {
-            "field": "__count",
-            "type": "quantitative",
-            "title": "Number of startups"
-          }
-        ]
-      }
-    },
-    {
-      "width": 500,
       "height": 250,
       "title": "Number of startups with different industries",
       "transform": [
@@ -112,7 +70,7 @@
           "scale": {
             "type": "threshold",
             "domain": [10, 20, 30, 50, 150],
-            "range": [10, 50, 150, 200, 300, 400]
+            "range": [50, 100, 150, 250, 600, 800]
           },
           "legend": false
         },
@@ -137,7 +95,6 @@
       "height": 150,
       "mark": "line",
       "title": "Use this line chart to filter out the data based on time",
-      
       "params": [
         {
           "name": "time_brush",
