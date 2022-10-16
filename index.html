@@ -16,7 +16,15 @@
 
     <!-- CSS file -->
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
-
+    <style>
+      body {
+          height: 842px;
+          width: 595px;
+          /* to centre page on screen*/
+          margin-left: auto;
+          margin-right: auto;
+      }
+      </style>
     
 </head>
 
@@ -42,9 +50,7 @@
   },
   "title": "Big corps in 2022",
 
-  "vconcat": [
-    {
-      "hconcat": [
+      "vconcat": [
         {
           "width": 600,
           "height": 300,
@@ -92,7 +98,7 @@
                   "title": "Rating",
                   "scale": {
                     "type": "threshold",
-                    "domain": [1, 2, 3, 4,5],
+                    "domain": [1, 2, 3, 4, 5],
                     "range": [
                       "#fdbe85",
                       "#fd8d3c",
@@ -105,7 +111,11 @@
                 },
                 "tooltip": [
                   {"field": "Year", "type": "temporal"},
-                  {"field": "rating", "type": "quantitative","title":"Rating"},
+                  {
+                    "field": "rating",
+                    "type": "quantitative",
+                    "title": "Rating"
+                  },
                   {"field": "Country", "type": "nominal"}
                 ]
               },
@@ -114,11 +124,8 @@
                 {
                   "transform": [
                     {
-                      "aggregate": [{
-                        "op": "count",
-                        "as": "Number of corps"
-                      }],
-                      "groupby": ["rating","Year","Country"]
+                      "aggregate": [{"op": "count", "as": "Number of corps"}],
+                      "groupby": ["rating", "Year", "Country"]
                     },
                     {
                       "window": [{"op": "rank", "as": "ranking"}],
@@ -129,10 +136,13 @@
                     {"filter": "datum.count <= 1"},
                     {
                       "lookup": "Country",
-                      "from":{
-                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                      "from": {
+                        "data": {
+                          "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"
+                        },
                         "key": "name",
-                        "fields":["latitude","longitude"]}
+                        "fields": ["latitude", "longitude"]
+                      }
                     },
                     {
                       "calculate": "'The highest number of big corps of; the selected period: ' + datum['Number of corps'] + ', with rating: '+datum['rating']",
@@ -159,7 +169,6 @@
                       }
                     },
                     {
-                      
                       "mark": {
                         "type": "text",
                         "align": "right",
@@ -178,8 +187,15 @@
           ]
         },
         {
-          "width": 475,
+          "width": 600,
           "height": 280,
+          "title": "Use this line chart to filter out the data based on time",
+          "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
           "transform": [
             {
               "bin": {"step": 1, "extent": [1, 5]},
@@ -192,46 +208,32 @@
             "x": {
               "field": "Year",
               "timeUnit": "year",
-              "scale": {"domain": {"param": "time_brush"}},
               "axis": {"title": "", "tickCount": 5, "grid": false}
             },
-            "y": {"aggregate": "count", "title": "Number of startups", "stack":"center"},
+            "y": {
+              "aggregate": "count",
+              "title": "Number of startups",
+              "stack": "center"
+            },
             "color": {
               "field": "Rating",
               "scale": {
-                "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000","black"]
-              },
-              "legend": null
+                "range": [
+                  "#fdbe85",
+                  "#fd8d3c",
+                  "#e6550d",
+                  "#bd0026",
+                  "#7f0000",
+                  "black"
+                ]
+              }
             }
           }
         }
       ]
-    },
-    {
-      "width": 1200,
-      "height": 60,
-      "mark": {"type": "line", "color": "#fdbe85"},
-      "title": "Use this line chart to filter out the data based on time",
-      "params": [
-        {
-          "name": "time_brush",
-          "select": {"type": "interval", "encodings": ["x"]}
-        }
-      ],
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "timeUnit": "year",
-          "axis": {"title": "", "format": "%Y"}
-        },
-        "y": {
-          "aggregate": "count",
-          "axis": {"tickCount": 3, "grid": false},
-          "title": "Count"
-        }
-      }
-    }
-  ],
+    
+  ,
+  "resolve": {"scale": {"color": "independent"}},
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 };
  vegaEmbed("#vis1", specVis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
@@ -410,7 +412,7 @@
 
             <h2>Let's look at startups, our seem-to-be-uncertain option</h2>
             <!-- pure grid group -->
-            <p>With a steady increase in quantity, startups are now backed <br>
+            <p align="left">With a steady increase in quantity, startups are now backed <br>
             by investors to grow faster. Providing innovative solutions and <br>
             creative working environment, more people are moving out from big <br>
             corps to indulge into startup ecosystem. We use number of investors <br>
@@ -425,11 +427,9 @@
     "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/startup_v2.csv"
   },
   "title": "Startups in 2022",
-
   "vconcat": [
     {
-      "hconcat": [
-        {
+        
           "width": 600,
           "height": 300,
           "title": "Startups around the globe (Sep 2022)",
@@ -497,28 +497,29 @@
                 {"mark": {"type": "circle", "opacity": 0.4, "size": 15}},
                 {
                   "transform": [
-                    
                     {
-                      "aggregate": [{
-                        "op": "count",
-                        "as": "Number of startups"
-                      }],
-                      "groupby": ["Number of investors","Year","Country"]
+                      "aggregate": [
+                        {"op": "count", "as": "Number of startups"}
+                      ],
+                      "groupby": ["Number of investors", "Year", "Country"]
                     },
-                    
                     {
                       "window": [{"op": "rank", "as": "ranking"}],
-                      "sort": [{"field": "Number of startups", "order": "descending"}]
+                      "sort": [
+                        {"field": "Number of startups", "order": "descending"}
+                      ]
                     },
                     {"filter": "datum.ranking == 1"},
                     {
                       "lookup": "Country",
-                      "from":{
-                        "data": {"url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"},
+                      "from": {
+                        "data": {
+                          "url": "https://raw.githubusercontent.com/jasienlt/3179/main/data/for%20viz%202/countries.csv"
+                        },
                         "key": "name",
-                        "fields":["latitude","longitude"]}
+                        "fields": ["latitude", "longitude"]
+                      }
                     },
-                    
                     {
                       "calculate": "'The highest number of startups of; the selected period: ' + datum['Number of startups'] + ', with number of investors: '+datum['Number of investors']",
                       "as": "text_annotation_raw"
@@ -560,11 +561,20 @@
               "resolve": {"scale": {"color": "independent"}}
             }
           ]
-        },
-        {
-          "width": 475,
+        
+        
+      
+    },
+    {
+          "width": 600,
           "height": 280,
-          "title":"Number of startups backed up with number of investors",
+          "title": "Number of startups backed up with number of investors",
+          "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
           "transform": [
             {
               "bin": {"step": 1, "extent": [1, 4]},
@@ -572,12 +582,11 @@
               "as": "Number of investors"
             }
           ],
-          "mark": {"type":"area","point":true},
+          "mark": {"type": "area", "point": true},
           "encoding": {
             "x": {
               "field": "Year",
               "timeUnit": "year",
-              "scale": {"domain": {"param": "time_brush"}},
               "axis": {"title": "", "tickCount": 5, "grid": false}
             },
             "y": {"aggregate": "count", "title": "Number of startups"},
@@ -585,43 +594,21 @@
               "field": "Number of investors",
               "scale": {
                 "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
-              }},
-          "tooltip": [
-                  {"field": "Year", "type": "temporal"},
-                  {"field": "Number of investors", "type": "quantitative"},
-                  {"field": "__count", "type": "quantitative","title":"Number of startups"}
-
-                ]
-            }
+              }
+            },
+            "tooltip": [
+              {"field": "Year", "type": "temporal"},
+              {"field": "Number of investors", "type": "quantitative"},
+              {
+                "field": "__count",
+                "type": "quantitative",
+                "title": "Number of startups"
+              }
+            ]
           }
-        
-      ]
-    },
-    {
-      "width": 1200,
-      "height": 60,
-      "mark": {"type": "line", "color": "#fdbe85"},
-      "title": "Use this line chart to filter out the data based on time",
-      "params": [
-        {
-          "name": "time_brush",
-          "select": {"type": "interval", "encodings": ["x"]}
         }
-      ],
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "timeUnit": "year",
-          "axis": {"title": "", "format": "%Y"}
-        },
-        "y": {
-          "aggregate": "count",
-          "axis": {"tickCount": 3, "grid": false},
-          "title": "Count"
-        }
-      }
-    }
   ],
+  "resolve": {"scale": {"color": "independent"}},
   "config": {"title": {"font": "sans-serif", "fontSize": 16}}
 };
     vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
@@ -703,7 +690,7 @@
       "tooltip": [
         {"field": "Year", "type": "temporal"},
         {"field": "ranking", "type": "ordinal", "title":"Rank"},
-        {"field": "continent", "type": "nominal"},
+        {"field": "continent", "type": "nominal","title":"Continent"},
         {"field": "no_company1", "type": "quantitative","title":"Number of startups"}
 
     ]
@@ -749,7 +736,7 @@
             </div>
             <!-- end pure grid group -->
 
-            <hr class="hr3">
+
 
 
             
@@ -795,48 +782,7 @@
     }
   ],
   "vconcat": [
-    {
-      "width": 500,
-      "height": 150,
-      "mark": "line",
-      "title": "Number of startups within different continents",
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "timeUnit": "year",
-          "scale": {"domain": {"param": "time_brush"}},
-          "axis": {"title": "", "tickCount": 5, "grid": false}
-        },
-        "y": {"aggregate": "count", "title": "Number of startups"},
-        "color": {"type": "nominal", "field": "Continent", "scale":
-        {"domain":[
-          "Africa",
-          "Americas",
-          "Asia",
-          "Europe",
-          "Oceania",
-          "South America"
-        ],
-        "range":[
-          "#e41a1c",
-          "#984ea3",
-          "#ff7f00",
-          "#a6cee3",
-          "#377eb8",
-          "#a65628"
-        ]}
-        },
-        "tooltip": [
-          {"field": "Year", "type": "temporal", "title": "Year"},
-          {"field": "Continent", "type": "nominal", "title": "Continent"},
-          {
-            "field": "__count",
-            "type": "quantitative",
-            "title": "Number of startups"
-          }
-        ]
-      }
-    },
+    
     {
       "width": 500,
       "height": 250,

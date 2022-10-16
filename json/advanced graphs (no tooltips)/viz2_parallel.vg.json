@@ -95,7 +95,7 @@
     {
       "encoding": {
         "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 1500}
+        "y": {"value": 150}
       },
       "layer": [
         {
@@ -108,7 +108,7 @@
     {
       "encoding": {
         "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 3000}
+        "y": {"value": 300}
       },
       "layer": [
         {
