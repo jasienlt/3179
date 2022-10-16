@@ -343,15 +343,15 @@ Released   : 20081009
                     "opacity": {"condition":{"param":"continent_highlight","value":0.6},"value":0.2},
                     "tooltip": [
                       {"type": "nominal", "field": "Continent"},
-                      {"type": "quantitative", "field": "Number of reviews"},
-                      {"type": "quantitative", "field": "Number of jobs"},
-                      {"type": "quantitative", "field": "Number of interviews"},
-                      {"type": "quantitative", "field": "Amount of salaries"}
+                      {"type": "quantitative", "format":",","field": "Number of reviews"},
+                      {"type": "quantitative", "format":",","field": "Number of jobs"},
+                      {"type": "quantitative", "format":",","field": "Number of interviews"},
+                      {"type": "quantitative", "format":",","field": "Amount of salaries"}
                     ]
                   }
                 },
                 {
-                  "encoding": {"x": {"type": "nominal", "field": "key"}, "y": {"value": 0}},
+                  "encoding": {"x": {"type": "nominal", "format":",","field": "key"}, "y": {"value": 0}},
                   "layer": [
                     {
                       "mark": {"type": "text", "style": "label"},
@@ -671,8 +671,8 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
   ],
   "transform": [
     {
-          "filter": "Continent_selection == null || datum.continent == Continent_selection"
-        }
+      "filter": "Continent_selection == null || datum.continent == Continent_selection"
+    }
   ],
   "vconcat": [
     {
@@ -683,7 +683,6 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
         {"filter": "datum.continent != 0"},
         {"filter": "datum.Year != 0"},
         {"field": "datum.no_corps == 'Startups'"},
-        
         {
           "aggregate": [
             {"op": "sum", "field": "no_company", "as": "no_company1"}
@@ -719,6 +718,7 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
           {
             "field": "no_company1",
             "type": "quantitative",
+            "format":",",
             "title": "Number of startups"
           }
         ]
@@ -732,7 +732,6 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
         {"filter": "datum.continent != 0"},
         {"filter": "datum.Year != 0"},
         {"field": "datum.no_corps == 'Startups'"},
-
         {
           "aggregate": [
             {"op": "sum", "field": "no_company", "as": "no_company1"}
@@ -760,6 +759,7 @@ vegaEmbed("#vis3", specVis3, {mode: "vega-lite"}).then(console.log).catch(consol
           {
             "field": "no_company1",
             "type": "quantitative",
+            "format":",",
             "title": "Number of startups"
           }
         ]
